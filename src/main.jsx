@@ -479,7 +479,7 @@ function WeeklyPage() {
           <div className="absolute right-4 top-4 rounded border border-brass/25 bg-ink px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-parchment">Week 01</div>
           <p className="text-sm font-black uppercase tracking-[0.25em] text-bullion">Morale Theme</p>
           <h3 className="mt-6 text-4xl font-black leading-none text-parchment sm:text-5xl">Insert theme of the week</h3>
-          <p className="mt-4 max-w-xl text-parchment/70">The moral PDF will  be inserted here.</p>
+          <p className="mt-4 max-w-xl text-parchment/70">The morale PDF will  be inserted here.</p>
           <div className="mt-8 h-2 overflow-hidden rounded bg-brass/20">
             <div className="h-full w-3/4 rounded bg-bullion" />
           </div>
