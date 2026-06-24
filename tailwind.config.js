@@ -18,9 +18,19 @@ export default {
         float: "float 6s ease-in-out infinite",
         sweep: "sweep 7s linear infinite",
         pulseGold: "pulseGold 2.7s ease-in-out infinite",
-        rise: "rise 700ms ease both"
+        rise: "rise 700ms ease both",
+        fadeIn: "fadeIn 220ms ease both",
+        zoomIn: "zoomIn 320ms cubic-bezier(0.22, 1, 0.36, 1) both"
       },
       keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" }
+        },
+        zoomIn: {
+          "0%": { opacity: "0", transform: "scale(0.9) translateY(14px)" },
+          "100%": { opacity: "1", transform: "scale(1) translateY(0)" }
+        },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-12px)" }

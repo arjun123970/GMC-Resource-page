@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { createRoot } from "react-dom/client"
 import trainImage from "../images__5_-removebg-preview.png"
 import {
@@ -12,8 +12,7 @@ import {
   Download,
   FileText,
   GraduationCap,
-  Lock,
-  Mail,
+  Maximize2,
   Medal,
   Menu,
   NotebookTabs,
@@ -23,7 +22,6 @@ import {
   Sparkles,
   Target,
   Trophy,
-  Unlock,
   Users,
   X
 } from "lucide-react"
@@ -39,8 +37,7 @@ const navItems = [
   { id: "classes", label: "Links to buy uniform items", icon: Users },
   { id: "fitness", label: "Fitness", icon: Activity },
   { id: "dodmerb", label: "DODMERB", icon: ClipboardList },
-  { id: "calendar", label: "Calendar", icon: CalendarDays },
-  { id: "staff", label: "Staff", icon: Lock }
+  { id: "calendar", label: "Calendar", icon: CalendarDays }
 ]
 
 const weeklyObjectives = [
@@ -52,32 +49,63 @@ const weeklyObjectives = [
 
 const academicBlocks = [
   {
-    title: "Quizlets",
-    items: ["Chain Of Command", "Rank structure", "Majcoms and Fieldcoms", "Airmans creed and Code of conduct"]
+    title: "Study Material",
+    items: [
+      { label: "Code of Conduct", href: "https://knowt.com/flashcards/41c96fba-71b4-4cba-bc14-c6e2ec32c4bf"},
+      { label: "Chain of Command", href: "https://knowt.com/flashcards/8787a94f-59a3-474f-bb54-8635b0911392" },
+      { label: "Majcoms and Fieldcoms", href: "https://knowt.com/flashcards/55f18cd8-8aaf-421b-bbcc-135c58e13776" },
+      { label: "Airmans creed", href: "https://knowt.com/flashcards/444475a0-2dc2-4801-849b-88ad6f1550ca" },
+      { label: "All other study materials", href: "https://knowt.com/folder/7d426136-8cd7-4511-a816-13184dac07cc" }
+    ]
   },
   {
     title: "Weekly PDF's",
-    items: ["SI PPTX", "LLAB PPTX", "Quiz Answers PPTX", "Archived PDFs from previous weeks"]
+    items: [
+      { label: "SI PPTX", href: "#" },
+      { label: "LLAB PPTX", href: "#" },
+      { label: "Quiz Answers PPTX", href: "#" },
+      { label: "Archived PDFs from previous weeks", href: "#" }
+    ]
   },
   {
     title: "Topics for the week",
-    items: ["ROTC OPBOARD topics?", "Lorum Ipsum", "Lorum Ipsum", "Lorum Ipsum"]
+    items: [
+      { label: "ROTC OPBOARD topics?", href: "#" },
+      { label: "Lorum Ipsum", href: "#" },
+      { label: "Lorum Ipsum", href: "#" },
+      { label: "Lorum Ipsum", href: "#" }
+    ]
   }
 ]
 
 const drillResources = [
-  { title: "FDE Prep", detail: "PDF detailing procedure as well as maybe a stando FDE procedure? Will need to talk to AO about this." },
-  { title: "ORI Readiness", detail: "Same deal as before." },
-  { title: "Procedures", detail: "Other Procedures like Fall in, Change of Command, and how to do every role type deal." }
+  { title: "FDE Prep", detail: "PDF detailing procedure as well as maybe a stando FDE procedure? Will need to talk to AO about this.", href: "#" },
+  { title: "ORI Readiness", detail: "Same deal as before.", href: "#" },
+  { title: "Procedures", detail: "Other Procedures like Fall in, Change of Command, and how to do every role type deal.", href: "#" }
 ]
 
+const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
+
 const uniformItems = [
-  "Sharp Crease on pants, Iron it",
-  "Shoes polished, laces tucked, and soles clean",
-  "Name tag on the right(Idk if we are doing this for this semester but yk)",
-  "OCP stuff, make sure to burn off or cut off any loose threads",
-  "Blouse your pants accordingly(Will need to talk to SO about this)",
-  "OCP placeholder For other stuff"
+  { label: "Table of Contents", page:18 },
+  { label: "Male hair standards", page:35 },
+  { label: "Female hair standards", page: 38 },
+  { label: "OCP Blouse and Trousers", page: 60 },
+  { label: "OCP Boots", page: 61 },
+  { label: "Patch placement", page: 74 },
+  { label: "OCP Cover", page: 72 }
+]
+
+const pcaPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
+
+const pcaItems = [
+  { label: "Table of Contents", page:18 },
+  { label: "Male hair standards", page:35 },
+  { label: "Female hair standards", page: 38 },
+  { label: "OCP Blouse and Trousers", page: 60 },
+  { label: "OCP Boots", page: 61 },
+  { label: "Patch placement", page: 74 },
+  { label: "OCP Cover", page: 72 }
 ]
 
 const checklistItems = [
@@ -111,12 +139,7 @@ const resourceLibrary = [
   }
 ]
 
-const calendarEvents = [
-  ["Mon", "Academics Review", "1800"],
-  ["Tue", "PT Session", "0600"],
-  ["Thu", "LLAB", "1600"],
-  ["Fri", "Office Hours", "1300"]
-]
+const outlookCalendarUrl = "https://outlook.office365.com/calendar/published/b02bb9e20ae947ababa2ba82084ccbbf@purdue.edu/f107ebc640be40e4b2902ebe442c1f8711563787882679947947/calendar.html"
 
 const dodmerbSteps = [
   {
@@ -275,21 +298,12 @@ function SteamTrainIcon({ size = 24, className = "" }) {
 function App() {
   const [active, setActive] = useState("weekly")
   const [menuOpen, setMenuOpen] = useState(false)
-  const [staffPass, setStaffPass] = useState("")
-  const [staffUnlocked, setStaffUnlocked] = useState(false)
   const current = useMemo(() => navItems.find((item) => item.id === active), [active])
 
   const goTo = (id) => {
     setActive(id)
     setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
-  const unlockStaff = (event) => {
-    event.preventDefault()
-    if (staffPass.trim().toLowerCase() === "gold") {
-      setStaffUnlocked(true)
-    }
   }
 
   return (
@@ -314,14 +328,6 @@ function App() {
             {active === "fitness" && <FitnessPage />}
             {active === "dodmerb" && <DodmerbPage />}
             {active === "calendar" && <CalendarPage />}
-            {active === "staff" && (
-              <StaffPage
-                staffPass={staffPass}
-                setStaffPass={setStaffPass}
-                staffUnlocked={staffUnlocked}
-                unlockStaff={unlockStaff}
-              />
-            )}
           </div>
         </div>
       </section>
@@ -507,12 +513,30 @@ function AcademicsPage() {
           <div key={block.title} className="rounded border border-brass/15 bg-field/72 p-4">
             <h3 className="text-lg font-black text-parchment">{block.title}</h3>
             <div className="mt-4 space-y-2">
-              {block.items.map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm text-parchment/74">
-              <BookOpen size={15} className="text-brass" />
-                  {item}
-                </div>
-              ))}
+              {block.items.map((item, index) => {
+                const label = typeof item === "string" ? item : item.label
+                const href = typeof item === "string" ? undefined : item.href
+                if (href) {
+                  return (
+                    <a
+                      key={index}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-2 text-sm font-bold text-bullion underline decoration-brass/40 underline-offset-4 transition hover:text-parchment hover:decoration-bullion"
+                    >
+                      <BookOpen size={15} className="text-brass" />
+                      {label}
+                    </a>
+                  )
+                }
+                return (
+                  <div key={index} className="flex items-center gap-2 text-sm text-parchment/74">
+                    <BookOpen size={15} className="text-brass" />
+                    {label}
+                  </div>
+                )
+              })}
             </div>
           </div>
         ))}
@@ -526,11 +550,17 @@ function DrillPage() {
     <Panel title="Drill & Procedures" icon={Shield}>
       <div className="grid gap-4 md:grid-cols-3">
         {drillResources.map((resource) => (
-          <article key={resource.title} className="group rounded border border-brass/15 bg-field/72 p-5 transition hover:border-bullion/45">
+          <a
+            key={resource.title}
+            href={resource.href}
+            target="_blank"
+            rel="noreferrer"
+            className="group block rounded border border-brass/15 bg-field/72 p-5 transition hover:border-bullion/45 hover:bg-[#e9dcc0] hover:shadow-gold"
+          >
             <Shield className="mb-5 text-brass" size={30} />
             <h3 className="text-lg font-black text-parchment">{resource.title}</h3>
             <p className="mt-3 text-sm leading-6 text-parchment/68">{resource.detail}</p>
-          </article>
+          </a>
         ))}
       </div>
     </Panel>
@@ -539,19 +569,133 @@ function DrillPage() {
 
 function UniformPage() {
   return (
-    <Panel title="Uniform Wearing Guide" icon={Shirt}>
+    <div className="grid gap-6">
+      <UniformGuide title="OCP Guide" pdf={uniformPdf} pdfVar="uniformPdf" items={uniformItems} />
+      <UniformGuide title="PCA Guide" pdf={pcaPdf} pdfVar="pcaPdf" items={pcaItems} />
+    </div>
+  )
+}
+
+function UniformGuide({ title, pdf, pdfVar, items }) {
+  const [expanded, setExpanded] = useState(false)
+  const [page, setPage] = useState(1)
+
+  const openAt = (target) => {
+    setPage(target)
+    setExpanded(true)
+  }
+
+  const pdfSrc = (target) => (pdf ? `${pdf}#page=${target}` : "")
+
+  useEffect(() => {
+    if (!expanded) return undefined
+    const onKey = (event) => {
+      if (event.key === "Escape") setExpanded(false)
+    }
+    document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", onKey)
+    return () => {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", onKey)
+    }
+  }, [expanded])
+
+  return (
+    <Panel title={title} icon={Shirt}>
       <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="rounded border border-brass/15 bg-field/72 p-5">
-          <div className="mx-auto grid h-80 max-w-52 place-items-center rounded-t-full border border-brass/25 bg-ink">
-            <Shirt size={104} className="text-bullion" />
-          </div>
+          <button
+            type="button"
+            onClick={() => openAt(1)}
+            className="group relative block h-80 w-full overflow-hidden rounded border border-brass/25 bg-ink text-left transition duration-300 hover:border-bullion/55 hover:shadow-gold"
+            aria-label={`Expand ${title} PDF`}
+          >
+            {pdf ? (
+              <iframe
+                src={pdfSrc(1)}
+                title={title}
+                className="pointer-events-none h-full w-full"
+              />
+            ) : (
+              <span className="grid h-full w-full place-items-center text-center text-sm text-parchment/45">
+                <span>
+                  <FileText size={40} className="mx-auto mb-3 text-brass" />
+                  Add your PDF URL to <span className="font-bold text-parchment/70">{pdfVar}</span>
+                </span>
+              </span>
+            )}
+            <span className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-ink/85 via-ink/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
+              <span className="mb-6 inline-flex translate-y-3 items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian shadow-gold transition duration-300 group-hover:translate-y-0">
+                <Maximize2 size={16} />
+                Click to expand
+              </span>
+            </span>
+          </button>
         </div>
         <div className="grid gap-3 sm:grid-cols-2">
-          {uniformItems.map((item) => (
-            <div key={item} className="rounded border border-brass/12 bg-field/72 p-4 text-sm leading-6 text-parchment/78">{item}</div>
+          {items.map((item) => (
+            <button
+              key={item.label}
+              type="button"
+              onClick={() => openAt(item.page)}
+              className="group flex items-start justify-between gap-3 rounded border border-brass/12 bg-field/72 p-4 text-left text-sm leading-6 text-parchment/78 transition duration-200 hover:border-bullion/55 hover:bg-[#e9dcc0] hover:text-parchment"
+            >
+              <span>{item.label}</span>
+              <span className="inline-flex shrink-0 items-center gap-1 rounded bg-ink px-2 py-1 text-xs font-black text-brass transition group-hover:text-bullion">
+                <FileText size={12} />
+                p.{item.page}
+              </span>
+            </button>
           ))}
         </div>
       </div>
+
+      {expanded && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          onClick={() => setExpanded(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={title}
+        >
+          <div className="absolute inset-0 bg-obsidian/80 backdrop-blur-sm" />
+          <div
+            className="relative z-10 flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded border border-brass/30 bg-ink shadow-gold animate-zoomIn"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-brass/20 bg-field px-5 py-3">
+              <h3 className="flex items-center gap-2 text-lg font-black text-parchment">
+                <Shirt size={18} className="text-brass" />
+                {title}
+                <span className="rounded bg-ink px-2 py-1 text-xs font-black text-brass">Page {page}</span>
+              </h3>
+              <button
+                type="button"
+                onClick={() => setExpanded(false)}
+                className="grid size-9 place-items-center rounded border border-brass/25 bg-ink text-parchment transition hover:border-bullion/55 hover:text-bullion"
+                aria-label="Close"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            {pdf ? (
+              <iframe
+                key={page}
+                src={pdfSrc(page)}
+                title={`${title} expanded`}
+                className="h-full w-full flex-1 bg-ink"
+              />
+            ) : (
+              <div className="grid flex-1 place-items-center p-8 text-center text-sm text-parchment/55">
+                <span>
+                  <FileText size={48} className="mx-auto mb-4 text-brass" />
+                  Set the <span className="font-bold text-parchment/75">{pdfVar}</span> URL to display your PDF here.
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </Panel>
   )
 }
@@ -760,59 +904,28 @@ function DodmerbPage() {
 
 function CalendarPage() {
   return (
-    <Panel title="Outlook Calendar Preview" icon={CalendarDays}>
-      <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {calendarEvents.map(([day, title, time]) => (
-            <div key={title} className="rounded border border-brass/15 bg-field/72 p-4">
-              <span className="text-xs font-black uppercase tracking-[0.2em] text-brass">{day}</span>
-              <h3 className="mt-8 font-black text-parchment">{title}</h3>
-              <p className="mt-2 text-sm text-parchment/68">{time}</p>
-            </div>
-          ))}
-        </div>
-        <div className="rounded border border-brass/15 bg-field/72 p-5">
-          <Mail className="text-brass" size={30} />
-          <h3 className="mt-5 text-xl font-black text-parchment">Calendar Sync Placeholder</h3>
-          <p className="mt-3 text-sm leading-6 text-parchment/68">This area is ready for Outlook calendar links, subscription instructions, or embedded event exports.</p>
-        </div>
+    <Panel
+      title="Outlook Calendar"
+      icon={CalendarDays}
+      action={
+        <a
+          href={outlookCalendarUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+        >
+          <CalendarDays size={16} />
+          Open in new tab
+        </a>
+      }
+    >
+      <div className="overflow-hidden rounded border border-brass/20 bg-ink">
+        <iframe
+          src={outlookCalendarUrl}
+          title="Detachment 220 Outlook calendar"
+          className="h-[70vh] min-h-[520px] w-full bg-white"
+        />
       </div>
-    </Panel>
-  )
-}
-
-function StaffPage({ staffPass, setStaffPass, staffUnlocked, unlockStaff }) {
-  return (
-    <Panel title="Locked Staff Page" icon={Lock}>
-      {!staffUnlocked ? (
-        <form onSubmit={unlockStaff} className="mx-auto max-w-md rounded border border-brass/15 bg-field/72 p-6">
-          <Lock className="text-brass" size={34} />
-          <h3 className="mt-5 text-2xl font-black text-parchment">Staff Access</h3>
-          <p className="mt-2 text-sm leading-6 text-parchment/68">Enter the demo password to preview the staff dashboard.</p>
-          <input
-            value={staffPass}
-            onChange={(event) => setStaffPass(event.target.value)}
-            type="password"
-            placeholder="Password"
-            className="mt-5 w-full rounded border border-brass/25 bg-ink px-4 py-3 text-parchment outline-none transition focus:border-bullion"
-          />
-          <button className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded bg-bullion px-4 py-3 font-black text-obsidian transition hover:bg-[#efd28c]">
-            <Unlock size={18} />
-            Unlock
-          </button>
-          <p className="mt-3 text-xs text-parchment/50">Demo password: gold</p>
-        </form>
-      ) : (
-        <div className="grid gap-4 md:grid-cols-3">
-          {["LLAB planning", "Flight notes", "Sensitive links"].map((item) => (
-            <div key={item} className="rounded border border-brass/15 bg-field/72 p-5">
-              <Unlock className="text-brass" size={26} />
-              <h3 className="mt-5 text-lg font-black text-parchment">{item}</h3>
-              <p className="mt-2 text-sm leading-6 text-parchment/68">Private staff content placeholder for future protected resources.</p>
-            </div>
-          ))}
-        </div>
-      )}
     </Panel>
   )
 }
