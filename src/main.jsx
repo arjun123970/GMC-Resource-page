@@ -1,43 +1,22 @@
 import React, { useEffect, useMemo, useState } from "react"
 import { createRoot } from "react-dom/client"
+import faviconImage from "../favicon.png"
 import trainImage from "../images__5_-removebg-preview.png"
-import {
-  Activity,
-  BookOpen,
-  CalendarDays,
-  Calculator,
-  CheckSquare,
-  ChevronRight,
-  ClipboardList,
-  Download,
-  FileText,
-  GraduationCap,
-  Maximize2,
-  Medal,
-  Menu,
-  NotebookTabs,
-  Printer,
-  Shield,
-  Shirt,
-  Sparkles,
-  Target,
-  Trophy,
-  Users,
-  X
-} from "lucide-react"
+import summerWorkoutPlanPdf from "../Summer Workout Plan F26 (1).pdf"
+import "@flaticon/flaticon-uicons/css/regular/rounded.css"
 import "./styles.css"
 
 const navItems = [
-  { id: "weekly", label: "Weekly", icon: SteamTrainIcon },
-  { id: "academics", label: "Academics", icon: GraduationCap },
-  { id: "drill", label: "Drill", icon: Shield },
-  { id: "uniforms", label: "Uniforms", icon: Shirt },
-  { id: "checklists", label: "Checklists", icon: CheckSquare },
-  { id: "resources", label: "Resources", icon: FileText },
-  { id: "classes", label: "Links to buy uniform items", icon: Users },
-  { id: "fitness", label: "Fitness", icon: Activity },
-  { id: "dodmerb", label: "DODMERB", icon: ClipboardList },
-  { id: "calendar", label: "Calendar", icon: CalendarDays }
+  { id: "td0", label: "TD-0", icon: "clipboard-list" },
+  { id: "weekly", label: "Weekly", icon: "train-side" },
+  { id: "academics", label: "Academics", icon: "graduation-cap" },
+  { id: "drill", label: "Drill", icon: "shield" },
+  { id: "uniforms", label: "Uniforms", icon: "shirt" },
+  { id: "checklists", label: "Checklists", icon: "checkbox" },
+  { id: "resources", label: "Resources", icon: "folder-open" },
+  { id: "fitness", label: "Fitness", icon: "dumbbell-fitness" },
+  { id: "dodmerb", label: "DODMERB", icon: "stethoscope" },
+  { id: "calendar", label: "Calendar", icon: "calendar-days" }
 ]
 
 const weeklyObjectives = [
@@ -45,6 +24,37 @@ const weeklyObjectives = [
   "Goal 2",
   "Goal 3",
   "Goal 4"
+]
+
+const td0UniformPdf = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
+
+const td0Pdfs = [
+  {
+    title: "TD-0 Welcome Packet",
+    detail: "Add the TD-0 welcome, schedule, or orientation PDF here.",
+    href: "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
+  },
+  {
+    title: "TD-0 Briefing Slides",
+    detail: "Add the TD-0 academic, training, or LLAB briefing PDF here.",
+    href: "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
+  },
+  {
+    title: "TD-0 Reference Guide",
+    detail: "Add the TD-0 reference, procedures, or standards PDF here.",
+    href: "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
+  }
+]
+
+const td0ChecklistItems = [
+  "Printed or downloaded TD-0 PDFs",
+  "Pens and note taking supplies",
+  "Water bottle",
+  "Backpack",
+  "Required uniform items",
+  "Phone alarms turned off",
+  "Know arrival time and location",
+  "Any detachment-specific items announced for TD-0"
 ]
 
 const academicBlocks = [
@@ -70,10 +80,10 @@ const academicBlocks = [
   {
     title: "Topics for the week",
     items: [
-      { label: "ROTC OPBOARD topics?", href: "#" },
-      { label: "Lorum Ipsum", href: "#" },
-      { label: "Lorum Ipsum", href: "#" },
-      { label: "Lorum Ipsum", href: "#" }
+      { label: "Topic 1", href: "#" },
+      { label: "Topic 2", href: "#" },
+      { label: "Topic 3", href: "#" },
+      { label: "Topic 4", href: "#" }
     ]
   }
 ]
@@ -85,28 +95,6 @@ const drillResources = [
 ]
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
-
-const uniformItems = [
-  { label: "Table of Contents", page:18 },
-  { label: "Male hair standards", page:35 },
-  { label: "Female hair standards", page: 38 },
-  { label: "OCP Blouse and Trousers", page: 60 },
-  { label: "OCP Boots", page: 61 },
-  { label: "Patch placement", page: 74 },
-  { label: "OCP Cover", page: 72 }
-]
-
-const pcaPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
-
-const pcaItems = [
-  { label: "Table of Contents", page:18 },
-  { label: "Male hair standards", page:35 },
-  { label: "Female hair standards", page: 38 },
-  { label: "OCP Blouse and Trousers", page: 60 },
-  { label: "OCP Boots", page: 61 },
-  { label: "Patch placement", page: 74 },
-  { label: "OCP Cover", page: 72 }
-]
 
 const checklistItems = [
   "Pens",
@@ -263,40 +251,18 @@ function scoreByWhtr(waist, height) {
   }
 }
 
-function SteamTrainIcon({ size = 24, className = "" }) {
+function FlaticonIcon({ name, size = 20, className = "" }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.9"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
+    <i
+      className={classNames(`fi fi-rr-${name}`, "inline-flex items-center justify-center leading-none", className)}
+      style={{ fontSize: size, width: size, height: size }}
       aria-hidden="true"
-    >
-      <path d="M3 17h17" />
-      <path d="M5 17V9h7v8" />
-      <path d="M12 12h5.5c1.9 0 3.5 1.6 3.5 3.5V17" />
-      <path d="M6.5 9V6.5h4V9" />
-      <path d="M15 12V8h3v4" />
-      <path d="M16.5 8V5.5" />
-      <path d="M7 6.5c-.8-1.1-.4-2.2.9-2.7" />
-      <path d="M10 6.5c.8-1.2.4-2.4-.9-3" />
-      <path d="M18 5.5c1-.9 1-2 .1-2.8" />
-      <circle cx="7" cy="18.5" r="1.5" />
-      <circle cx="14" cy="18.5" r="1.5" />
-      <circle cx="19" cy="18.5" r="1.5" />
-      <path d="M4 20h17" />
-      <path d="M7 12h2" />
-    </svg>
+    />
   )
 }
 
 function App() {
-  const [active, setActive] = useState("weekly")
+  const [active, setActive] = useState("td0")
   const [menuOpen, setMenuOpen] = useState(false)
   const current = useMemo(() => navItems.find((item) => item.id === active), [active])
 
@@ -318,13 +284,13 @@ function App() {
         <div className="min-w-0">
           <Hero active={current} />
           <div className="mt-6">
+            {active === "td0" && <Td0Page />}
             {active === "weekly" && <WeeklyPage />}
             {active === "academics" && <AcademicsPage />}
             {active === "drill" && <DrillPage />}
             {active === "uniforms" && <UniformPage />}
             {active === "checklists" && <ChecklistPage />}
             {active === "resources" && <ResourcesPage />}
-            {active === "classes" && <ClassesPage />}
             {active === "fitness" && <FitnessPage />}
             {active === "dodmerb" && <DodmerbPage />}
             {active === "calendar" && <CalendarPage />}
@@ -340,9 +306,9 @@ function Header({ active, goTo, menuOpen, setMenuOpen }) {
   return (
     <header className="sticky top-0 z-30 border-b border-brass/20 bg-ink/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <button onClick={() => goTo("weekly")} className="flex items-center gap-3 text-left">
-          <span className="grid size-11 place-items-center rounded border border-brass/25 bg-obsidian text-ink">
-            <Medal size={24} />
+        <button onClick={() => goTo("td0")} className="flex items-center gap-3 text-left">
+          <span className="grid size-11 place-items-center overflow-hidden rounded bg-transparent p-0.5">
+            <img src={faviconImage} alt="" className="h-full w-full object-contain" />
           </span>
           <span>
             <span className="block text-base font-black uppercase tracking-[0.16em] text-parchment sm:text-lg">GMC Hub</span>
@@ -368,7 +334,7 @@ function Header({ active, goTo, menuOpen, setMenuOpen }) {
           className="grid size-11 place-items-center rounded border border-brass/30 bg-field text-parchment lg:hidden"
           aria-label="Toggle navigation"
         >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          <FlaticonIcon name={menuOpen ? "cross-small" : "menu-burger"} size={22} />
         </button>
       </div>
     </header>
@@ -379,7 +345,6 @@ function NavRail({ active, goTo }) {
   return (
     <nav className="sticky top-24 space-y-2 rounded border border-brass/20 bg-ink/95 p-3 shadow-gold">
       {navItems.map((item) => {
-        const Icon = item.icon
         return (
           <button
             key={item.id}
@@ -390,10 +355,10 @@ function NavRail({ active, goTo }) {
             )}
           >
             <span className="flex items-center gap-3 text-sm font-bold">
-              <Icon size={18} />
+              <FlaticonIcon name={item.icon} size={18} />
               {item.label}
             </span>
-            <ChevronRight size={16} className={active === item.id ? "opacity-100" : "opacity-0 transition group-hover:opacity-100"} />
+            <FlaticonIcon name="angle-small-right" size={16} className={active === item.id ? "opacity-100" : "opacity-0 transition group-hover:opacity-100"} />
           </button>
         )
       })}
@@ -407,7 +372,6 @@ function MobileNav({ active, goTo, open }) {
     <div className="fixed inset-x-3 top-20 z-40 rounded border border-brass/25 bg-ink p-3 shadow-gold lg:hidden">
       <div className="grid grid-cols-2 gap-2">
         {navItems.map((item) => {
-          const Icon = item.icon
           return (
             <button
               key={item.id}
@@ -417,7 +381,7 @@ function MobileNav({ active, goTo, open }) {
                 active === item.id ? "bg-obsidian text-ink" : "bg-field text-parchment/78"
               )}
             >
-              <Icon size={17} />
+              <FlaticonIcon name={item.icon} size={17} />
               {item.label}
             </button>
           )
@@ -428,15 +392,12 @@ function MobileNav({ active, goTo, open }) {
 }
 
 function Hero({ active }) {
-  const Icon = active.icon
-  const isWeekly = active.id === "weekly"
   return (
     <section className="relative overflow-hidden rounded border border-brass/20 bg-ink/95 p-6 shadow-gold sm:p-8">
       <div className="absolute inset-x-0 top-0 h-1 bg-bullion" />
       <div className="relative grid gap-6 lg:grid-cols-[1fr_260px] lg:items-center">
         <div>
-          <div className="mb-4 inline-flex items-center gap-2 rounded border border-brass/25 bg-field px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-obsidian">
-            <Sparkles size={15} />
+          <div className="mb-4 inline-flex rounded border border-brass/25 bg-field px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-obsidian">
             Detachment 220 Boilermakers
           </div>
           <h1 className="max-w-3xl text-4xl font-black leading-tight text-parchment sm:text-6xl">
@@ -447,27 +408,19 @@ function Hero({ active }) {
           </p>
         </div>
         <div className="relative mx-auto grid aspect-square w-full max-w-[220px] place-items-center overflow-hidden bg-transparent">
-          {isWeekly ? (
-            <img src={trainImage} alt="Steam train" className="h-full w-full object-contain p-0" />
-          ) : (
-            <>
-              <div className="absolute inset-5 rounded border border-brass/18" />
-              <div className="absolute inset-10 rounded border border-brass/20" />
-              <Icon size={86} className="text-bullion" />
-            </>
-          )}
+          <img src={trainImage} alt="Boilermaker train" className="h-full w-full object-contain p-0" />
         </div>
       </div>
     </section>
   )
 }
 
-function Panel({ title, icon: Icon, children, action }) {
+function Panel({ title, icon, children, action }) {
   return (
     <section className="rounded border border-brass/18 bg-ink/95 p-5 shadow-gold">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h2 className="flex items-center gap-3 text-xl font-black text-parchment">
-          <Icon size={22} />
+          <FlaticonIcon name={icon} size={22} />
           {title}
         </h2>
         {action}
@@ -477,10 +430,166 @@ function Panel({ title, icon: Icon, children, action }) {
   )
 }
 
+function Td0Page() {
+  return (
+    <div className="grid gap-6">
+      <Panel title="TD-0 PDFs" icon="file">
+        <div className="grid gap-4 md:grid-cols-3">
+          {td0Pdfs.map((pdf, index) => (
+            <Td0PdfEmbed
+              key={pdf.title}
+              pdf={pdf}
+              index={index}
+            />
+          ))}
+        </div>
+      </Panel>
+
+      <Panel
+        title="Uniform Section"
+        icon="shirt"
+        action={
+          <a
+            href={td0UniformPdf}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+          >
+            <FlaticonIcon name="file" size={16} />
+            Open PDF
+          </a>
+        }
+      >
+        <div className="overflow-hidden rounded border border-brass/20 bg-ink">
+          <iframe
+            src={td0UniformPdf}
+            title="TD-0 Uniform Standards"
+            className="h-[70vh] min-h-[520px] w-full bg-ink"
+          />
+        </div>
+      </Panel>
+
+      <Panel
+        title="TD-0 Checklist"
+        icon="checkbox"
+        action={
+          <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
+            <FlaticonIcon name="print" size={16} />
+            Print
+          </button>
+        }
+      >
+        <ChecklistGrid items={td0ChecklistItems} />
+      </Panel>
+    </div>
+  )
+}
+
+function Td0PdfEmbed({ pdf, index }) {
+  const [expanded, setExpanded] = useState(false)
+  const hasPdf = Boolean(pdf.href && pdf.href !== "#")
+
+  useEffect(() => {
+    if (!expanded) return undefined
+    const onKey = (event) => {
+      if (event.key === "Escape") setExpanded(false)
+    }
+    document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", onKey)
+    return () => {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", onKey)
+    }
+  }, [expanded])
+
+  return (
+    <section className="flex aspect-square min-h-[280px] flex-col overflow-hidden rounded border border-brass/15 bg-field/72">
+      <div className="flex min-h-[118px] items-start justify-between gap-3 border-b border-brass/15 bg-ink px-4 py-3">
+        <div>
+          <h3 className="text-lg font-black text-parchment">TD-0 PDFs</h3>
+        </div>
+        {hasPdf && (
+          <a
+            href={pdf.href}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex shrink-0 items-center gap-2 rounded bg-bullion px-3 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+          >
+            <FlaticonIcon name="file" size={15} />
+            Open
+          </a>
+        )}
+      </div>
+      <button
+        type="button"
+        onClick={() => setExpanded(true)}
+        className="group relative min-h-0 flex-1 bg-ink text-left transition hover:bg-field/80"
+        aria-label={`Expand ${pdf.title}`}
+      >
+        {hasPdf ? (
+          <iframe
+            src={pdf.href}
+            title={pdf.title}
+            className="pointer-events-none h-full w-full"
+          />
+        ) : (
+          <div className="h-full w-full bg-field/72" />
+        )}
+        <span className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-ink/85 via-ink/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
+          <span className="mb-5 inline-flex translate-y-3 items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian shadow-gold transition duration-300 group-hover:translate-y-0">
+            <FlaticonIcon name="expand" size={16} />
+            Click to expand
+          </span>
+        </span>
+      </button>
+
+      {expanded && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          onClick={() => setExpanded(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={pdf.title}
+        >
+          <div className="absolute inset-0 bg-obsidian/80 backdrop-blur-sm" />
+          <div
+            className="relative z-10 flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded border border-brass/30 bg-ink shadow-gold animate-zoomIn"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-brass/20 bg-field px-5 py-3">
+              <h3 className="flex items-center gap-2 text-lg font-black text-parchment">
+                <FlaticonIcon name="file" size={18} className="text-brass" />
+                {pdf.title}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setExpanded(false)}
+                className="grid size-9 place-items-center rounded border border-brass/25 bg-ink text-parchment transition hover:border-bullion/55 hover:text-bullion"
+                aria-label="Close"
+              >
+                <FlaticonIcon name="cross-small" size={18} />
+              </button>
+            </div>
+            {hasPdf ? (
+              <iframe
+                src={pdf.href}
+                title={`${pdf.title} expanded`}
+                className="h-full w-full flex-1 bg-ink"
+              />
+            ) : (
+              <div className="flex-1 bg-field/72" />
+            )}
+          </div>
+        </div>
+      )}
+    </section>
+  )
+}
+
 function WeeklyPage() {
   return (
     <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-      <Panel title="Weekly Morale Poster" icon={Trophy}>
+      <Panel title="Weekly Morale Poster" icon="trophy">
         <div className="relative overflow-hidden rounded border border-brass/25 bg-field p-7">
           <div className="absolute right-4 top-4 rounded border border-brass/25 bg-ink px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-parchment">Week 01</div>
           <p className="text-sm font-black uppercase tracking-[0.25em] text-bullion">Morale Theme</p>
@@ -491,7 +600,7 @@ function WeeklyPage() {
           </div>
         </div>
       </Panel>
-      <Panel title="Growth Goals & LLAB" icon={Target}>
+      <Panel title="Growth Goals & LLAB" icon="target">
         <div className="space-y-3">
           {weeklyObjectives.map((objective, index) => (
             <div key={objective} className="flex items-start gap-3 rounded border border-brass/15 bg-field/72 p-3">
@@ -507,7 +616,7 @@ function WeeklyPage() {
 
 function AcademicsPage() {
   return (
-    <Panel title="Academics Study Page" icon={GraduationCap}>
+    <Panel title="Academics Study Page" icon="graduation-cap">
       <div className="grid gap-4 md:grid-cols-3">
         {academicBlocks.map((block) => (
           <div key={block.title} className="rounded border border-brass/15 bg-field/72 p-4">
@@ -525,14 +634,14 @@ function AcademicsPage() {
                       rel="noreferrer"
                       className="flex items-center gap-2 text-sm font-bold text-bullion underline decoration-brass/40 underline-offset-4 transition hover:text-parchment hover:decoration-bullion"
                     >
-                      <BookOpen size={15} className="text-brass" />
+                      <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />
                       {label}
                     </a>
                   )
                 }
                 return (
                   <div key={index} className="flex items-center gap-2 text-sm text-parchment/74">
-                    <BookOpen size={15} className="text-brass" />
+                    <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />
                     {label}
                   </div>
                 )
@@ -547,7 +656,7 @@ function AcademicsPage() {
 
 function DrillPage() {
   return (
-    <Panel title="Drill & Procedures" icon={Shield}>
+    <Panel title="Drill & Procedures" icon="shield">
       <div className="grid gap-4 md:grid-cols-3">
         {drillResources.map((resource) => (
           <a
@@ -557,7 +666,7 @@ function DrillPage() {
             rel="noreferrer"
             className="group block rounded border border-brass/15 bg-field/72 p-5 transition hover:border-bullion/45 hover:bg-[#e9dcc0] hover:shadow-gold"
           >
-            <Shield className="mb-5 text-brass" size={30} />
+            <FlaticonIcon name="shield" className="mb-5 text-brass" size={30} />
             <h3 className="text-lg font-black text-parchment">{resource.title}</h3>
             <p className="mt-3 text-sm leading-6 text-parchment/68">{resource.detail}</p>
           </a>
@@ -570,22 +679,14 @@ function DrillPage() {
 function UniformPage() {
   return (
     <div className="grid gap-6">
-      <UniformGuide title="OCP Guide" pdf={uniformPdf} pdfVar="uniformPdf" items={uniformItems} />
-      <UniformGuide title="PCA Guide" pdf={pcaPdf} pdfVar="pcaPdf" items={pcaItems} />
+      <UniformGuide title="Detachment Uniform SOP" pdf={td0UniformPdf} pdfVar="td0UniformPdf" />
+      <UniformGuide title="DAFI 36-2903" pdf={uniformPdf} pdfVar="uniformPdf" />
     </div>
   )
 }
 
-function UniformGuide({ title, pdf, pdfVar, items }) {
+function UniformGuide({ title, pdf, pdfVar }) {
   const [expanded, setExpanded] = useState(false)
-  const [page, setPage] = useState(1)
-
-  const openAt = (target) => {
-    setPage(target)
-    setExpanded(true)
-  }
-
-  const pdfSrc = (target) => (pdf ? `${pdf}#page=${target}` : "")
 
   useEffect(() => {
     if (!expanded) return undefined
@@ -601,53 +702,51 @@ function UniformGuide({ title, pdf, pdfVar, items }) {
   }, [expanded])
 
   return (
-    <Panel title={title} icon={Shirt}>
-      <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded border border-brass/15 bg-field/72 p-5">
-          <button
-            type="button"
-            onClick={() => openAt(1)}
-            className="group relative block h-80 w-full overflow-hidden rounded border border-brass/25 bg-ink text-left transition duration-300 hover:border-bullion/55 hover:shadow-gold"
-            aria-label={`Expand ${title} PDF`}
+    <Panel
+      title={title}
+      icon="shirt"
+      action={
+        pdf && (
+          <a
+            href={pdf}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
           >
-            {pdf ? (
-              <iframe
-                src={pdfSrc(1)}
-                title={title}
-                className="pointer-events-none h-full w-full"
-              />
-            ) : (
-              <span className="grid h-full w-full place-items-center text-center text-sm text-parchment/45">
-                <span>
-                  <FileText size={40} className="mx-auto mb-3 text-brass" />
-                  Add your PDF URL to <span className="font-bold text-parchment/70">{pdfVar}</span>
-                </span>
-              </span>
-            )}
-            <span className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-ink/85 via-ink/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
-              <span className="mb-6 inline-flex translate-y-3 items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian shadow-gold transition duration-300 group-hover:translate-y-0">
-                <Maximize2 size={16} />
-                Click to expand
+            <FlaticonIcon name="file" size={16} />
+            Open PDF
+          </a>
+        )
+      }
+    >
+      <div className="rounded border border-brass/15 bg-field/72 p-5">
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="group relative block h-[520px] min-h-[420px] w-full overflow-hidden rounded border border-brass/25 bg-ink text-left transition duration-300 hover:border-bullion/55 hover:shadow-gold"
+          aria-label={`Expand ${title} PDF`}
+        >
+          {pdf ? (
+            <iframe
+              src={pdf}
+              title={title}
+              className="pointer-events-none h-full w-full"
+            />
+          ) : (
+            <span className="grid h-full w-full place-items-center text-center text-sm text-parchment/45">
+              <span>
+                <FlaticonIcon name="file" size={40} className="mx-auto mb-3 text-brass" />
+                Add your PDF URL to <span className="font-bold text-parchment/70">{pdfVar}</span>
               </span>
             </span>
-          </button>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {items.map((item) => (
-            <button
-              key={item.label}
-              type="button"
-              onClick={() => openAt(item.page)}
-              className="group flex items-start justify-between gap-3 rounded border border-brass/12 bg-field/72 p-4 text-left text-sm leading-6 text-parchment/78 transition duration-200 hover:border-bullion/55 hover:bg-[#e9dcc0] hover:text-parchment"
-            >
-              <span>{item.label}</span>
-              <span className="inline-flex shrink-0 items-center gap-1 rounded bg-ink px-2 py-1 text-xs font-black text-brass transition group-hover:text-bullion">
-                <FileText size={12} />
-                p.{item.page}
-              </span>
-            </button>
-          ))}
-        </div>
+          )}
+          <span className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-ink/85 via-ink/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
+            <span className="mb-6 inline-flex translate-y-3 items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian shadow-gold transition duration-300 group-hover:translate-y-0">
+              <FlaticonIcon name="expand" size={16} />
+              Click to expand
+            </span>
+          </span>
+        </button>
       </div>
 
       {expanded && (
@@ -665,9 +764,8 @@ function UniformGuide({ title, pdf, pdfVar, items }) {
           >
             <div className="flex items-center justify-between gap-3 border-b border-brass/20 bg-field px-5 py-3">
               <h3 className="flex items-center gap-2 text-lg font-black text-parchment">
-                <Shirt size={18} className="text-brass" />
+                <FlaticonIcon name="shirt" size={18} className="text-brass" />
                 {title}
-                <span className="rounded bg-ink px-2 py-1 text-xs font-black text-brass">Page {page}</span>
               </h3>
               <button
                 type="button"
@@ -675,20 +773,19 @@ function UniformGuide({ title, pdf, pdfVar, items }) {
                 className="grid size-9 place-items-center rounded border border-brass/25 bg-ink text-parchment transition hover:border-bullion/55 hover:text-bullion"
                 aria-label="Close"
               >
-                <X size={18} />
+                <FlaticonIcon name="cross-small" size={18} />
               </button>
             </div>
             {pdf ? (
               <iframe
-                key={page}
-                src={pdfSrc(page)}
+                src={pdf}
                 title={`${title} expanded`}
                 className="h-full w-full flex-1 bg-ink"
               />
             ) : (
               <div className="grid flex-1 place-items-center p-8 text-center text-sm text-parchment/55">
                 <span>
-                  <FileText size={48} className="mx-auto mb-4 text-brass" />
+                  <FlaticonIcon name="file" size={48} className="mx-auto mb-4 text-brass" />
                   Set the <span className="font-bold text-parchment/75">{pdfVar}</span> URL to display your PDF here.
                 </span>
               </div>
@@ -704,29 +801,35 @@ function ChecklistPage() {
   return (
     <Panel
       title="Printable Checklist"
-      icon={CheckSquare}
+      icon="checkbox"
       action={
         <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
-          <Printer size={16} />
+          <FlaticonIcon name="print" size={16} />
           Print
         </button>
       }
     >
-      <div className="print-area grid gap-3 sm:grid-cols-2">
-        {checklistItems.map((item) => (
-          <label key={item} className="flex items-center gap-3 rounded border border-brass/15 bg-field/72 p-4 text-sm font-bold text-parchment/82">
-            <input type="checkbox" className="size-5 accent-bullion" />
-            {item}
-          </label>
-        ))}
-      </div>
+      <ChecklistGrid items={checklistItems} />
     </Panel>
+  )
+}
+
+function ChecklistGrid({ items }) {
+  return (
+    <div className="print-area grid gap-3 sm:grid-cols-2">
+      {items.map((item) => (
+        <label key={item} className="flex items-center gap-3 rounded border border-brass/15 bg-field/72 p-4 text-sm font-bold text-parchment/82">
+          <input type="checkbox" className="size-5 accent-bullion" />
+          {item}
+        </label>
+      ))}
+    </div>
   )
 }
 
 function ResourcesPage() {
   return (
-    <Panel title="Resource Library" icon={FileText}>
+    <Panel title="Resource Library" icon="folder-open">
       <div className="grid gap-4 md:grid-cols-2">
         {resourceLibrary.map(({ title, detail, href }) => {
           const ResourceTag = href ? "a" : "button"
@@ -742,38 +845,12 @@ function ResourcesPage() {
               <span className="block text-lg font-black text-parchment">{title}</span>
               <span className="mt-2 block text-sm leading-6 text-parchment/68">{detail}</span>
             </span>
-            <Download size={22} className="shrink-0 text-brass transition group-hover:translate-y-1" />
+            <FlaticonIcon name="download" size={22} className="shrink-0 text-brass transition group-hover:translate-y-1" />
           </ResourceTag>
           )
         })}
       </div>
     </Panel>
-  )
-}
-
-function ClassesPage() {
-  return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      <Panel title="Uniform Items" icon={Users}>
-        <ClassTrack items={["Link to buy Black Polo", "Link to buy Kakhis", "Link to buy shoes", "Link to buy belt"]} />
-      </Panel>
-      <Panel title="Additional Items we recommend" icon={NotebookTabs}>
-        <ClassTrack items={["Spray Starch", "Shoe Shine", "Iron", "Steamer(optional)"]} />
-      </Panel>
-    </div>
-  )
-}
-
-function ClassTrack({ items }) {
-  return (
-    <div className="space-y-3">
-      {items.map((item, index) => (
-        <div key={item} className="flex items-center gap-3 rounded border border-brass/12 bg-field/72 p-4">
-          <span className="text-xl font-black text-brass">0{index + 1}</span>
-          <span className="font-bold text-parchment/82">{item}</span>
-        </div>
-      ))}
-    </div>
   )
 }
 
@@ -794,59 +871,85 @@ function FitnessPage() {
   const excellent = total >= 90
 
   return (
-    <Panel title="AFROTC PFA Calculator" icon={Calculator}>
-      <div className="grid gap-5 xl:grid-cols-[1fr_340px]">
-        <div className="rounded border border-brass/15 bg-field/72 p-5">
-          <div className="grid gap-4 md:grid-cols-2">
-            <label className="block">
-              <span className="text-xs font-black uppercase tracking-[0.18em] text-brass">Gender</span>
-              <select
-                value={gender}
-                onChange={(event) => setGender(event.target.value)}
-                className="mt-2 w-full rounded border border-brass/25 bg-ink px-4 py-3 font-bold text-parchment outline-none transition focus:border-bullion"
-              >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </label>
-            <FitnessInput label="2-mile run" value={runTime} setValue={setRunTime} placeholder="13:25" helper="mins:secs" />
-            <FitnessInput label="Pushups" value={pushups} setValue={setPushups} placeholder="67" helper="1 minute total" type="number" />
-            <FitnessInput label="Situps" value={situps} setValue={setSitups} placeholder="58" helper="1 minute total" type="number" />
-            <FitnessInput label="Height" value={height} setValue={setHeight} placeholder="70" helper="inches" type="number" />
-            <FitnessInput label="Waist" value={waist} setValue={setWaist} placeholder="34" helper="inches" type="number" />
+    <div className="grid gap-6">
+      <Panel
+        title="Summer Workout Plan"
+        icon="file"
+        action={
+          <a
+            href={summerWorkoutPlanPdf}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+          >
+            <FlaticonIcon name="file" size={16} />
+            Open PDF
+          </a>
+        }
+      >
+        <div className="overflow-hidden rounded border border-brass/20 bg-ink">
+          <iframe
+            src={summerWorkoutPlanPdf}
+            title="Summer Workout Plan F26"
+            className="h-[70vh] min-h-[520px] w-full bg-ink"
+          />
+        </div>
+      </Panel>
+
+      <Panel title="AFROTC PFA Calculator" icon="calculator">
+        <div className="grid gap-5 xl:grid-cols-[1fr_340px]">
+          <div className="rounded border border-brass/15 bg-field/72 p-5">
+            <div className="grid gap-4 md:grid-cols-2">
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-brass">Gender</span>
+                <select
+                  value={gender}
+                  onChange={(event) => setGender(event.target.value)}
+                  className="mt-2 w-full rounded border border-brass/25 bg-ink px-4 py-3 font-bold text-parchment outline-none transition focus:border-bullion"
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <FitnessInput label="2-mile run" value={runTime} setValue={setRunTime} placeholder="13:25" helper="mins:secs" />
+              <FitnessInput label="Pushups" value={pushups} setValue={setPushups} placeholder="67" helper="1 minute total" type="number" />
+              <FitnessInput label="Situps" value={situps} setValue={setSitups} placeholder="58" helper="1 minute total" type="number" />
+              <FitnessInput label="Height" value={height} setValue={setHeight} placeholder="70" helper="inches" type="number" />
+              <FitnessInput label="Waist" value={waist} setValue={setWaist} placeholder="34" helper="inches" type="number" />
+            </div>
+          </div>
+          <div className="rounded border border-brass/25 bg-field p-5 shadow-gold">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-bullion">Composite</p>
+                <p className="mt-2 text-5xl font-black text-parchment">{totalDisplay}</p>
+              </div>
+              <div className={classNames(
+                "rounded px-3 py-2 text-sm font-black uppercase tracking-[0.14em]",
+                passing ? "bg-bullion text-obsidian" : "bg-red-500/20 text-red-100"
+              )}>
+                {excellent ? "Excellent" : passing ? "Passing" : "Needs 75"}
+              </div>
+            </div>
+            <div className="mt-5 grid gap-3">
+              <ScoreRow label="Run" value={runScore} max="50" />
+              <ScoreRow label="Pushups" value={pushupScore} max="15" />
+              <ScoreRow label="Situps" value={situpScore} max="15" />
+              <ScoreRow label="Waist / Height" value={whtr.score} max="20" />
+            </div>
+            <div className="mt-5 rounded border border-brass/20 bg-ink p-4">
+              <p className="text-sm font-bold text-parchment">WHtR: {whtr.ratio === null ? "--" : whtr.ratio.toFixed(2)}</p>
+              <p className="mt-1 text-sm text-parchment/68">{whtr.category}</p>
+            </div>
           </div>
         </div>
-        <div className="rounded border border-brass/25 bg-field p-5 shadow-gold">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-bullion">Composite</p>
-              <p className="mt-2 text-5xl font-black text-parchment">{totalDisplay}</p>
-            </div>
-            <div className={classNames(
-              "rounded px-3 py-2 text-sm font-black uppercase tracking-[0.14em]",
-              passing ? "bg-bullion text-obsidian" : "bg-red-500/20 text-red-100"
-            )}>
-              {excellent ? "Excellent" : passing ? "Passing" : "Needs 75"}
-            </div>
-          </div>
-          <div className="mt-5 grid gap-3">
-            <ScoreRow label="Run" value={runScore} max="50" />
-            <ScoreRow label="Pushups" value={pushupScore} max="15" />
-            <ScoreRow label="Situps" value={situpScore} max="15" />
-            <ScoreRow label="Waist / Height" value={whtr.score} max="20" />
-          </div>
-          <div className="mt-5 rounded border border-brass/20 bg-ink p-4">
-            <p className="text-sm font-bold text-parchment">WHtR: {whtr.ratio === null ? "--" : whtr.ratio.toFixed(2)}</p>
-            <p className="mt-1 text-sm text-parchment/68">{whtr.category}</p>
-          </div>
+        <div className="mt-5 grid gap-3 md:grid-cols-3">
+          <FitnessNote title="Scoring" detail="Run is worth 50 points, pushups and situps are 15 each, and waist-to-height ratio is 20." />
+          <FitnessNote title="Waist-to-height" detail="The calculator divides waist by height, rounds to two decimals, then applies the chart points." />
+          <FitnessNote title="Passing" detail="A composite score of 75 or higher is marked passing; 90 or higher is marked excellent." />
         </div>
-      </div>
-      <div className="mt-5 grid gap-3 md:grid-cols-3">
-        <FitnessNote title="Scoring" detail="Run is worth 50 points, pushups and situps are 15 each, and waist-to-height ratio is 20." />
-        <FitnessNote title="Waist-to-height" detail="The calculator divides waist by height, rounds to two decimals, then applies the chart points." />
-        <FitnessNote title="Passing" detail="A composite score of 75 or higher is marked passing; 90 or higher is marked excellent." />
-      </div>
-    </Panel>
+      </Panel>
+    </div>
   )
 }
 
@@ -888,7 +991,7 @@ function FitnessNote({ title, detail }) {
 
 function DodmerbPage() {
   return (
-    <Panel title="DODMERB Help" icon={ClipboardList}>
+    <Panel title="DODMERB Help" icon="stethoscope">
       <div className="grid gap-4 md:grid-cols-4">
         {dodmerbSteps.map((step, index) => (
           <div key={step.title} className="rounded border border-brass/15 bg-field/72 p-5">
@@ -906,7 +1009,7 @@ function CalendarPage() {
   return (
     <Panel
       title="Outlook Calendar"
-      icon={CalendarDays}
+      icon="calendar-days"
       action={
         <a
           href={outlookCalendarUrl}
@@ -914,7 +1017,7 @@ function CalendarPage() {
           rel="noreferrer"
           className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
         >
-          <CalendarDays size={16} />
+          <FlaticonIcon name="calendar-days" size={16} />
           Open in new tab
         </a>
       }
