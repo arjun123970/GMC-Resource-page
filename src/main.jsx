@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client"
 import faviconImage from "../favicon.png"
 import trainImage from "../images__5_-removebg-preview.png"
 import summerWorkoutPlanPdf from "../Summer Workout Plan F26 (1).pdf"
+import td0OverviewImage from "../IMG_2577.jpeg"
+import td0UniformImage from "../IMG_2578.jpeg"
 import "@flaticon/flaticon-uicons/css/regular/rounded.css"
 import "./styles.css"
 
@@ -28,33 +30,17 @@ const weeklyObjectives = [
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
 
-const td0Pdfs = [
+const td0Flyers = [
   {
-    title: "TD-0 Welcome Packet",
-    detail: "Add the TD-0 welcome, schedule, or orientation PDF here.",
-    href: "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
+    title: "TD-0 Overview",
+    icon: "clipboard-list",
+    src: td0OverviewImage
   },
   {
-    title: "TD-0 Briefing Slides",
-    detail: "Add the TD-0 academic, training, or LLAB briefing PDF here.",
-    href: "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
-  },
-  {
-    title: "TD-0 Reference Guide",
-    detail: "Add the TD-0 reference, procedures, or standards PDF here.",
-    href: "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
+    title: "Uniform of the Day",
+    icon: "shirt",
+    src: td0UniformImage
   }
-]
-
-const td0ChecklistItems = [
-  "Printed or downloaded TD-0 PDFs",
-  "Pens and note taking supplies",
-  "Water bottle",
-  "Backpack",
-  "Required uniform items",
-  "Phone alarms turned off",
-  "Know arrival time and location",
-  "Any detachment-specific items announced for TD-0"
 ]
 
 const academicBlocks = [
@@ -89,9 +75,20 @@ const academicBlocks = [
 ]
 
 const drillResources = [
-  { title: "FDE Prep", detail: "PDF detailing procedure as well as maybe a stando FDE procedure? Will need to talk to AO about this.", href: "#" },
-  { title: "ORI Readiness", detail: "Same deal as before.", href: "#" },
-  { title: "Procedures", detail: "Other Procedures like Fall in, Change of Command, and how to do every role type deal.", href: "#" }
+  { title: "FDE Prep", detail: "", href: "#" },
+  { title: "ORI Readiness", detail: "", href: "#" },
+  { title: "Procedures", detail: "", href: "#" }
+]
+
+const td0ChecklistItems = [
+  "Printed or downloaded TD-0 PDFs",
+  "Pens and note taking supplies",
+  "Water bottle",
+  "Backpack",
+  "Required uniform items",
+  "Phone alarms turned off",
+  "Know arrival time and location",
+  "Any detachment-specific items announced for TD-0"
 ]
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
@@ -418,7 +415,7 @@ function Hero({ active }) {
 function Panel({ title, icon, children, action }) {
   return (
     <section className="rounded border border-brass/18 bg-ink/95 p-5 shadow-gold">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+      <div className={`${children ? "mb-4" : ""} flex flex-wrap items-center justify-between gap-3`}>
         <h2 className="flex items-center gap-3 text-xl font-black text-parchment">
           <FlaticonIcon name={icon} size={22} />
           {title}
@@ -433,20 +430,13 @@ function Panel({ title, icon, children, action }) {
 function Td0Page() {
   return (
     <div className="grid gap-6">
-      <Panel title="TD-0 PDFs" icon="file">
-        <div className="grid gap-4 md:grid-cols-3">
-          {td0Pdfs.map((pdf, index) => (
-            <Td0PdfEmbed
-              key={pdf.title}
-              pdf={pdf}
-              index={index}
-            />
-          ))}
-        </div>
-      </Panel>
-
+      <div className="grid gap-6 lg:grid-cols-2">
+        {td0Flyers.map((flyer) => (
+          <Td0FlyerCard key={flyer.title} flyer={flyer} />
+        ))}
+      </div>
       <Panel
-        title="Uniform Section"
+        title="Detachment Uniform SOP"
         icon="shirt"
         action={
           <a
@@ -459,16 +449,7 @@ function Td0Page() {
             Open PDF
           </a>
         }
-      >
-        <div className="overflow-hidden rounded border border-brass/20 bg-ink">
-          <iframe
-            src={td0UniformPdf}
-            title="TD-0 Uniform Standards"
-            className="h-[70vh] min-h-[520px] w-full bg-ink"
-          />
-        </div>
-      </Panel>
-
+      />
       <Panel
         title="TD-0 Checklist"
         icon="checkbox"
@@ -485,9 +466,8 @@ function Td0Page() {
   )
 }
 
-function Td0PdfEmbed({ pdf, index }) {
+function Td0FlyerCard({ flyer }) {
   const [expanded, setExpanded] = useState(false)
-  const hasPdf = Boolean(pdf.href && pdf.href !== "#")
 
   useEffect(() => {
     if (!expanded) return undefined
@@ -503,40 +483,30 @@ function Td0PdfEmbed({ pdf, index }) {
   }, [expanded])
 
   return (
-    <section className="flex aspect-square min-h-[280px] flex-col overflow-hidden rounded border border-brass/15 bg-field/72">
-      <div className="flex min-h-[118px] items-start justify-between gap-3 border-b border-brass/15 bg-ink px-4 py-3">
-        <div>
-          <h3 className="text-lg font-black text-parchment">TD-0 PDFs</h3>
-        </div>
-        {hasPdf && (
-          <a
-            href={pdf.href}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 rounded bg-bullion px-3 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
-          >
-            <FlaticonIcon name="file" size={15} />
-            Open
-          </a>
-        )}
-      </div>
+    <Panel
+      title={flyer.title}
+      icon={flyer.icon}
+      action={
+        <a
+          href={flyer.src}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+        >
+          <FlaticonIcon name="file" size={16} />
+          Open
+        </a>
+      }
+    >
       <button
         type="button"
         onClick={() => setExpanded(true)}
-        className="group relative min-h-0 flex-1 bg-ink text-left transition hover:bg-field/80"
-        aria-label={`Expand ${pdf.title}`}
+        className="group relative block w-full overflow-hidden rounded border border-brass/20 bg-ink text-left transition hover:border-bullion/55 hover:shadow-gold"
+        aria-label={`Expand ${flyer.title}`}
       >
-        {hasPdf ? (
-          <iframe
-            src={pdf.href}
-            title={pdf.title}
-            className="pointer-events-none h-full w-full"
-          />
-        ) : (
-          <div className="h-full w-full bg-field/72" />
-        )}
+        <img src={flyer.src} alt={flyer.title} className="w-full" />
         <span className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-ink/85 via-ink/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
-          <span className="mb-5 inline-flex translate-y-3 items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian shadow-gold transition duration-300 group-hover:translate-y-0">
+          <span className="mb-6 inline-flex translate-y-3 items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian shadow-gold transition duration-300 group-hover:translate-y-0">
             <FlaticonIcon name="expand" size={16} />
             Click to expand
           </span>
@@ -549,7 +519,7 @@ function Td0PdfEmbed({ pdf, index }) {
           onClick={() => setExpanded(false)}
           role="dialog"
           aria-modal="true"
-          aria-label={pdf.title}
+          aria-label={flyer.title}
         >
           <div className="absolute inset-0 bg-obsidian/80 backdrop-blur-sm" />
           <div
@@ -558,8 +528,8 @@ function Td0PdfEmbed({ pdf, index }) {
           >
             <div className="flex items-center justify-between gap-3 border-b border-brass/20 bg-field px-5 py-3">
               <h3 className="flex items-center gap-2 text-lg font-black text-parchment">
-                <FlaticonIcon name="file" size={18} className="text-brass" />
-                {pdf.title}
+                <FlaticonIcon name={flyer.icon} size={18} className="text-brass" />
+                {flyer.title}
               </h3>
               <button
                 type="button"
@@ -570,19 +540,13 @@ function Td0PdfEmbed({ pdf, index }) {
                 <FlaticonIcon name="cross-small" size={18} />
               </button>
             </div>
-            {hasPdf ? (
-              <iframe
-                src={pdf.href}
-                title={`${pdf.title} expanded`}
-                className="h-full w-full flex-1 bg-ink"
-              />
-            ) : (
-              <div className="flex-1 bg-field/72" />
-            )}
+            <div className="flex-1 overflow-auto bg-ink">
+              <img src={flyer.src} alt={flyer.title} className="mx-auto w-full" />
+            </div>
           </div>
         </div>
       )}
-    </section>
+    </Panel>
   )
 }
 
@@ -679,7 +643,21 @@ function DrillPage() {
 function UniformPage() {
   return (
     <div className="grid gap-6">
-      <UniformGuide title="Detachment Uniform SOP" pdf={td0UniformPdf} pdfVar="td0UniformPdf" />
+      <Panel
+        title="Detachment Uniform SOP"
+        icon="shirt"
+        action={
+          <a
+            href={td0UniformPdf}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+          >
+            <FlaticonIcon name="file" size={16} />
+            Open PDF
+          </a>
+        }
+      />
       <UniformGuide title="DAFI 36-2903" pdf={uniformPdf} pdfVar="uniformPdf" />
     </div>
   )
