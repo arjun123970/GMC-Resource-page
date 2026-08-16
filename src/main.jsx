@@ -9,17 +9,20 @@ import "@flaticon/flaticon-uicons/css/regular/rounded.css"
 import "./styles.css"
 
 const navItems = [
-  { id: "td0", label: "TD-0", icon: "clipboard-list" },
-  { id: "weekly", label: "Weekly", icon: "train-side" },
-  { id: "academics", label: "Academics", icon: "graduation-cap" },
-  { id: "drill", label: "Drill", icon: "shield" },
-  { id: "uniforms", label: "Uniforms", icon: "shirt" },
-  { id: "checklists", label: "Checklists", icon: "checkbox" },
-  { id: "resources", label: "Resources", icon: "folder-open" },
-  { id: "fitness", label: "Fitness", icon: "dumbbell-fitness" },
-  { id: "dodmerb", label: "DODMERB", icon: "stethoscope" },
-  { id: "calendar", label: "Calendar", icon: "calendar-days" }
+  { id: "td0", label: "TD-0", icon: "clipboard-list", hidden: false },
+  { id: "weekly", label: "Weekly", icon: "train-side", hidden: false },
+  { id: "academics", label: "Academics", icon: "graduation-cap", hidden: false },
+  { id: "drill", label: "Drill", icon: "shield", hidden: false },
+  { id: "uniforms", label: "Uniforms", icon: "shirt", hidden: false },
+  { id: "checklists", label: "Checklists", icon: "checkbox", hidden: false },
+  { id: "resources", label: "Resources", icon: "folder-open", hidden: true },
+  { id: "fitness", label: "Fitness", icon: "dumbbell-fitness", hidden: false },
+  { id: "dodmerb", label: "DODMERB", icon: "stethoscope", hidden: false },
+  { id: "calendar", label: "Calendar", icon: "calendar-days", hidden: false }
 ]
+
+const visibleNavItems = navItems.filter((item) => !item.hidden)
+const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
   "Goal 1",
@@ -28,7 +31,7 @@ const weeklyObjectives = [
   "Goal 4"
 ]
 
-const td0UniformPdf = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct%2FS26%20Detachment%20220%20SOPs%20%2D%20CAO%2028%20Feb%202026%2Epdf&parent=%2Fsites%2FAFROTCDetachment220%2FShared%20Documents%2FGeneral%2F00%2E%20S26%20USE%20ME%2F02%2E%20Policies%2FStandards%20and%20Conduct"
+const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
 
 const td0Flyers = [
   {
@@ -75,9 +78,9 @@ const academicBlocks = [
 ]
 
 const drillResources = [
-  { title: "FDE Prep", detail: "", href: "#" },
-  { title: "ORI Readiness", detail: "", href: "#" },
-  { title: "Procedures", detail: "", href: "#" }
+  { title: "FDE Procedures", detail: "", href: "https://www.youtube.com/watch?v=3hwmk0EjjTU" },
+  { title: "ORI Procedures", detail: "", href: "https://www.youtube.com/watch?v=igTnT-wqrZ0" },
+  { title: "Drill movements", detail: "", href: "https://www.youtube.com/playlist?list=PL3-uv6HAN-S8RwgO95RPxy9109De9G5TS" }
 ]
 
 const td0ChecklistItems = [
@@ -147,51 +150,23 @@ const dodmerbSteps = [
 
 const runScores = {
   male: [
-    ["13:25", 50], ["13:55", 49.4], ["14:12", 48.8], ["14:27", 48.1], ["14:41", 47.5],
-    ["15:05", 46.9], ["15:17", 46.3], ["15:28", 45.6], ["15:38", 45], ["16:09", 43.9],
-    ["16:29", 42.9], ["16:49", 41.8], ["17:08", 40.7], ["17:18", 39.6], ["17:37", 38.6],
-    ["17:55", 37.5], ["18:23", 35.5], ["18:39", 34], ["19:07", 32.5], ["19:36", 31],
-    ["19:45", 29.5]
+    ["13:25", 50], ["13:44", 49.5], ["14:03", 49], ["14:22", 48], ["14:41", 47],
+    ["15:00", 46], ["15:19", 45], ["15:38", 44], ["15:57", 43], ["16:16", 42],
+    ["16:35", 41], ["16:54", 40], ["17:13", 39], ["17:32", 38.5], ["17:51", 38],
+    ["18:10", 37.5], ["18:29", 37], ["18:48", 36.5], ["19:07", 36], ["19:36", 35.5],
+    ["19:45", 35]
   ],
   female: [
-    ["15:30", 50], ["15:55", 49.4], ["16:00", 48.8], ["16:04", 48.1], ["16:27", 47.5],
-    ["17:03", 46.9], ["17:17", 46.3], ["17:31", 45.6], ["17:44", 45], ["18:18", 43.9],
-    ["18:38", 42.9], ["18:58", 41.8], ["19:16", 40.7], ["19:34", 39.6], ["19:52", 38.6],
-    ["20:12", 37.5], ["20:57", 35.5], ["21:40", 34], ["22:07", 32.5], ["22:37", 31],
-    ["22:45", 29.5]
+    ["15:30", 50], ["16:00", 49.5], ["16:29", 49], ["16:59", 48], ["17:29", 47],
+    ["17:58", 46], ["18:28", 45], ["18:58", 44], ["19:27", 43], ["19:57", 42],
+    ["20:27", 41], ["20:56", 40], ["21:26", 39], ["21:55", 38.5], ["22:25", 38],
+    ["22:55", 37.5], ["23:24", 37], ["23:54", 36.5], ["24:24", 36], ["24:53", 35.5],
+    ["25:23", 35]
   ]
 }
 
-const pushupScores = {
-  male: [
-    [67, 15], [66, 14.9], [65, 14.7], [64, 14.6], [63, 14.4], [62, 14.3], [61, 14.1],
-    [60, 14], [59, 13.8], [58, 13.7], [57, 13.5], [56, 13.4], [55, 13.2], [54, 13.1],
-    [53, 12.9], [52, 12.8], [51, 12.6], [50, 12.5], [49, 12.3], [48, 12.2], [47, 12],
-    [46, 11.7], [45, 11.6], [44, 11.3], [43, 11], [42, 10.8], [41, 10.5], [40, 10.2],
-    [39, 9.8], [38, 9.5], [37, 9], [36, 8.7], [35, 8.3], [34, 8], [33, 7.5],
-    [32, 5.3], [31, 3], [30, 0.8]
-  ],
-  female: [
-    [47, 15], [46, 14.9], [45, 14.7], [44, 14.6], [43, 14.4], [42, 14.3], [41, 14.1],
-    [40, 14], [39, 13.8], [38, 13.7], [37, 13.5], [36, 13.4], [35, 13.2], [34, 12.9],
-    [33, 12.8], [32, 12.6], [31, 12.5], [30, 12.3], [29, 12.2], [28, 12], [27, 11.3],
-    [26, 11], [25, 10.8], [24, 10.5], [23, 9.8], [22, 9.5], [21, 9], [20, 8.7],
-    [19, 8.3], [18, 7.5], [17, 5.3], [16, 3], [15, 0.8]
-  ]
-}
-
-const situpScores = {
-  male: [
-    [58, 15], [57, 14.8], [56, 14.6], [55, 14.3], [54, 14.1], [53, 13.8], [52, 13.5],
-    [51, 13.2], [50, 13.1], [49, 12.8], [48, 12.5], [47, 12], [46, 11.3], [45, 10.5],
-    [44, 9.8], [43, 9.5], [42, 9], [41, 6.8], [40, 4.5], [39, 2.3]
-  ],
-  female: [
-    [54, 15], [53, 14.8], [52, 14.6], [51, 14.3], [50, 14.1], [49, 13.5], [48, 13.4],
-    [47, 13.2], [46, 12.9], [45, 12.8], [44, 12], [43, 11.7], [42, 11.3], [41, 10.5],
-    [40, 10.2], [39, 9.8], [38, 9], [37, 6.8], [36, 4.5], [35, 2.3]
-  ]
-}
+const hrPushupMax = { male: 52, female: 42 }
+const situpMax = { male: 58, female: 54 }
 
 const whtrScores = [
   [0.49, 20, "Low Risk"],
@@ -207,6 +182,20 @@ const whtrScores = [
   [0.59, 2.5, "High Risk"],
   [0.6, 0, "High Risk"]
 ]
+
+function youtubeEmbedUrl(href) {
+  try {
+    const url = new URL(href)
+    const video = url.searchParams.get("v")
+    const list = url.searchParams.get("list")
+    if (video) return `https://www.youtube.com/embed/${video}`
+    if (list) return `https://www.youtube.com/embed/videoseries?list=${list}`
+    const id = url.pathname.split("/").filter(Boolean).pop()
+    return id && id !== "playlist" ? `https://www.youtube.com/embed/${id}` : null
+  } catch {
+    return null
+  }
+}
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -225,11 +214,13 @@ function scoreByTime(value, table) {
   return match ? match[1] : 0
 }
 
-function scoreByReps(value, table) {
+function scoreByLinearReps(value, maxReps) {
   const reps = Number(value)
-  if (!Number.isFinite(reps)) return 0
-  const match = table.find(([minimum]) => reps >= minimum)
-  return match ? match[1] : 0
+  if (!Number.isFinite(reps) || reps < 0) return 0
+  const minReps = maxReps - 25
+  if (reps < minReps) return 0
+  if (reps >= maxReps) return 15
+  return 15 - (maxReps - reps) * 0.5
 }
 
 function scoreByWhtr(waist, height) {
@@ -259,9 +250,9 @@ function FlaticonIcon({ name, size = 20, className = "" }) {
 }
 
 function App() {
-  const [active, setActive] = useState("td0")
+  const [active, setActive] = useState(defaultTab)
   const [menuOpen, setMenuOpen] = useState(false)
-  const current = useMemo(() => navItems.find((item) => item.id === active), [active])
+  const current = useMemo(() => visibleNavItems.find((item) => item.id === active), [active])
 
   const goTo = (id) => {
     setActive(id)
@@ -303,17 +294,17 @@ function Header({ active, goTo, menuOpen, setMenuOpen }) {
   return (
     <header className="sticky top-0 z-30 border-b border-brass/20 bg-ink/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <button onClick={() => goTo("td0")} className="flex items-center gap-3 text-left">
+        <button onClick={() => goTo(defaultTab)} className="flex items-center gap-3 text-left">
           <span className="grid size-11 place-items-center overflow-hidden rounded bg-transparent p-0.5">
             <img src={faviconImage} alt="" className="h-full w-full object-contain" />
           </span>
           <span>
-            <span className="block text-base font-black uppercase tracking-[0.16em] text-parchment sm:text-lg">GMC Hub</span>
+            <span className="block text-base font-black uppercase tracking-[0.16em] text-parchment sm:text-lg">GMC Resource Page</span>
             <span className="block text-xs uppercase tracking-[0.2em] text-brass">Integrity · Service · Excellence</span>
           </span>
         </button>
         <div className="hidden items-center gap-2 lg:flex">
-          {navItems.slice(0, 5).map((item) => (
+          {visibleNavItems.slice(0, 5).map((item) => (
             <button
               key={item.id}
               onClick={() => goTo(item.id)}
@@ -341,7 +332,7 @@ function Header({ active, goTo, menuOpen, setMenuOpen }) {
 function NavRail({ active, goTo }) {
   return (
     <nav className="sticky top-24 space-y-2 rounded border border-brass/20 bg-ink/95 p-3 shadow-gold">
-      {navItems.map((item) => {
+      {visibleNavItems.map((item) => {
         return (
           <button
             key={item.id}
@@ -368,7 +359,7 @@ function MobileNav({ active, goTo, open }) {
   return (
     <div className="fixed inset-x-3 top-20 z-40 rounded border border-brass/25 bg-ink p-3 shadow-gold lg:hidden">
       <div className="grid grid-cols-2 gap-2">
-        {navItems.map((item) => {
+        {visibleNavItems.map((item) => {
           return (
             <button
               key={item.id}
@@ -398,11 +389,8 @@ function Hero({ active }) {
             Detachment 220 Boilermakers
           </div>
           <h1 className="max-w-3xl text-4xl font-black leading-tight text-parchment sm:text-6xl">
-            GMC Resource Hub
+            GMC Resource Page
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-parchment/72 sm:text-lg">
-            A one stop shop for all your GMC resource needs.
-          </p>
         </div>
         <div className="relative mx-auto grid aspect-square w-full max-w-[220px] place-items-center overflow-hidden bg-transparent">
           <img src={trainImage} alt="Boilermaker train" className="h-full w-full object-contain p-0" />
@@ -434,6 +422,38 @@ function Td0Page() {
         {td0Flyers.map((flyer) => (
           <Td0FlyerCard key={flyer.title} flyer={flyer} />
         ))}
+      </div>
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Panel
+          title="Uniform Items"
+          icon="shirt"
+          action={
+            <a
+              href="https://purdue0-my.sharepoint.com/:b:/g/personal/oabillei_purdue_edu/IQCscFfR0VjgQoIrBH7l0Z67AWbrRn7mdatWKm_Vn6ODbm8?e=hvLAk0"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+            >
+              <FlaticonIcon name="file" size={16} />
+              Open PDF
+            </a>
+          }
+        />
+        <Panel
+          title="F26 TD-0 OPORD"
+          icon="file"
+          action={
+            <a
+              href="https://purdue0-my.sharepoint.com/:b:/g/personal/oabillei_purdue_edu/IQAmEnk7kzvTSIHNBu47EFckAZjAlrZb2NiYRmniFxkf4h0?e=vkLYPT"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+            >
+              <FlaticonIcon name="file" size={16} />
+              Open PDF
+            </a>
+          }
+        />
       </div>
       <Panel
         title="Detachment Uniform SOP"
@@ -552,24 +572,20 @@ function Td0FlyerCard({ flyer }) {
 
 function WeeklyPage() {
   return (
-    <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-      <Panel title="Weekly Morale Poster" icon="trophy">
-        <div className="relative overflow-hidden rounded border border-brass/25 bg-field p-7">
-          <div className="absolute right-4 top-4 rounded border border-brass/25 bg-ink px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-parchment">Week 01</div>
-          <p className="text-sm font-black uppercase tracking-[0.25em] text-bullion">Morale Theme</p>
-          <h3 className="mt-6 text-4xl font-black leading-none text-parchment sm:text-5xl">Insert theme of the week</h3>
-          <p className="mt-4 max-w-xl text-parchment/70">The morale PDF will  be inserted here.</p>
-          <div className="mt-8 h-2 overflow-hidden rounded bg-brass/20">
-            <div className="h-full w-3/4 rounded bg-bullion" />
-          </div>
-        </div>
-      </Panel>
+    <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr] xl:items-start">
+      <Td0FlyerCard
+        flyer={{
+          title: "TD-0",
+          icon: "trophy",
+          src: td0Flyers[0].src
+        }}
+      />
       <Panel title="Growth Goals & LLAB" icon="target">
-        <div className="space-y-3">
+        <div className="grid gap-3">
           {weeklyObjectives.map((objective, index) => (
-            <div key={objective} className="flex items-start gap-3 rounded border border-brass/15 bg-field/72 p-3">
+            <div key={objective} className="flex items-center gap-3 rounded border border-brass/15 bg-field/72 px-3 py-2.5">
               <span className="grid size-7 shrink-0 place-items-center rounded bg-bullion text-sm font-black text-obsidian">{index + 1}</span>
-              <span className="text-sm leading-6 text-parchment/82">{objective}</span>
+              <span className="text-sm font-bold leading-5 text-parchment/82">{objective}</span>
             </div>
           ))}
         </div>
@@ -622,21 +638,120 @@ function DrillPage() {
   return (
     <Panel title="Drill & Procedures" icon="shield">
       <div className="grid gap-4 md:grid-cols-3">
-        {drillResources.map((resource) => (
-          <a
-            key={resource.title}
-            href={resource.href}
-            target="_blank"
-            rel="noreferrer"
-            className="group block rounded border border-brass/15 bg-field/72 p-5 transition hover:border-bullion/45 hover:bg-[#e9dcc0] hover:shadow-gold"
-          >
-            <FlaticonIcon name="shield" className="mb-5 text-brass" size={30} />
-            <h3 className="text-lg font-black text-parchment">{resource.title}</h3>
-            <p className="mt-3 text-sm leading-6 text-parchment/68">{resource.detail}</p>
-          </a>
-        ))}
+        {drillResources.map((resource) => {
+          const embed = youtubeEmbedUrl(resource.href)
+          if (embed) {
+            return <DrillVideoCard key={resource.title} resource={resource} embed={embed} />
+          }
+          return (
+            <a
+              key={resource.title}
+              href={resource.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group block rounded border border-brass/15 bg-field/72 p-5 transition hover:border-bullion/45 hover:bg-[#e9dcc0] hover:shadow-gold"
+            >
+              <FlaticonIcon name="shield" className="mb-5 text-brass" size={30} />
+              <h3 className="text-lg font-black text-parchment">{resource.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-parchment/68">{resource.detail}</p>
+            </a>
+          )
+        })}
       </div>
     </Panel>
+  )
+}
+
+function DrillVideoCard({ resource, embed }) {
+  const [expanded, setExpanded] = useState(false)
+
+  useEffect(() => {
+    if (!expanded) return undefined
+    const onKey = (event) => {
+      if (event.key === "Escape") setExpanded(false)
+    }
+    document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", onKey)
+    return () => {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", onKey)
+    }
+  }, [expanded])
+
+  return (
+    <div className="overflow-hidden rounded border border-brass/15 bg-field/72">
+      <div className="flex items-center justify-between gap-3 px-4 py-3">
+        <h3 className="text-lg font-black text-parchment">{resource.title}</h3>
+        <a
+          href={resource.href}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex shrink-0 items-center rounded bg-bullion px-3 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+        >
+          Open
+        </a>
+      </div>
+      <button
+        type="button"
+        onClick={() => setExpanded(true)}
+        className="group relative block aspect-video w-full overflow-hidden bg-ink text-left transition hover:border-bullion/55"
+        aria-label={`Expand ${resource.title}`}
+      >
+        <iframe
+          src={embed}
+          title={resource.title}
+          className="pointer-events-none h-full w-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+        <span className="pointer-events-none absolute inset-0 flex items-end justify-center bg-gradient-to-t from-ink/85 via-ink/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
+          <span className="mb-4 inline-flex translate-y-3 items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian shadow-gold transition duration-300 group-hover:translate-y-0">
+            <FlaticonIcon name="expand" size={16} />
+            Click to expand
+          </span>
+        </span>
+      </button>
+
+      {expanded && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          onClick={() => setExpanded(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={resource.title}
+        >
+          <div className="absolute inset-0 bg-obsidian/80 backdrop-blur-sm" />
+          <div
+            className="relative z-10 flex w-full max-w-5xl flex-col overflow-hidden rounded border border-brass/30 bg-ink shadow-gold animate-zoomIn"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-brass/20 bg-field px-5 py-3">
+              <h3 className="flex items-center gap-2 text-lg font-black text-parchment">
+                <FlaticonIcon name="shield" size={18} className="text-brass" />
+                {resource.title}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setExpanded(false)}
+                className="grid size-9 place-items-center rounded border border-brass/25 bg-ink text-parchment transition hover:border-bullion/55 hover:text-bullion"
+                aria-label="Close"
+              >
+                <FlaticonIcon name="cross-small" size={18} />
+              </button>
+            </div>
+            <div className="aspect-video w-full bg-ink">
+              <iframe
+                src={`${embed}${embed.includes("?") ? "&" : "?"}autoplay=1`}
+                title={`${resource.title} expanded`}
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -840,8 +955,8 @@ function FitnessPage() {
   const [height, setHeight] = useState("")
   const [waist, setWaist] = useState("")
   const runScore = scoreByTime(runTime, runScores[gender])
-  const pushupScore = scoreByReps(pushups, pushupScores[gender])
-  const situpScore = scoreByReps(situps, situpScores[gender])
+  const pushupScore = scoreByLinearReps(pushups, hrPushupMax[gender])
+  const situpScore = scoreByLinearReps(situps, situpMax[gender])
   const whtr = scoreByWhtr(waist, height)
   const total = runScore + pushupScore + situpScore + whtr.score
   const totalDisplay = total.toFixed(1).replace(".0", "")
@@ -890,8 +1005,8 @@ function FitnessPage() {
                 </select>
               </label>
               <FitnessInput label="2-mile run" value={runTime} setValue={setRunTime} placeholder="13:25" helper="mins:secs" />
-              <FitnessInput label="Pushups" value={pushups} setValue={setPushups} placeholder="67" helper="1 minute total" type="number" />
-              <FitnessInput label="Situps" value={situps} setValue={setSitups} placeholder="58" helper="1 minute total" type="number" />
+              <FitnessInput label="Hand-release push-ups" value={pushups} setValue={setPushups} placeholder="52" helper="2 minute total" type="number" />
+              <FitnessInput label="Sit-ups" value={situps} setValue={setSitups} placeholder="58" helper="1 minute total" type="number" />
               <FitnessInput label="Height" value={height} setValue={setHeight} placeholder="70" helper="inches" type="number" />
               <FitnessInput label="Waist" value={waist} setValue={setWaist} placeholder="34" helper="inches" type="number" />
             </div>
@@ -911,8 +1026,8 @@ function FitnessPage() {
             </div>
             <div className="mt-5 grid gap-3">
               <ScoreRow label="Run" value={runScore} max="50" />
-              <ScoreRow label="Pushups" value={pushupScore} max="15" />
-              <ScoreRow label="Situps" value={situpScore} max="15" />
+              <ScoreRow label="HR Push-ups" value={pushupScore} max="15" />
+              <ScoreRow label="Sit-ups" value={situpScore} max="15" />
               <ScoreRow label="Waist / Height" value={whtr.score} max="20" />
             </div>
             <div className="mt-5 rounded border border-brass/20 bg-ink p-4">
@@ -922,7 +1037,7 @@ function FitnessPage() {
           </div>
         </div>
         <div className="mt-5 grid gap-3 md:grid-cols-3">
-          <FitnessNote title="Scoring" detail="Run is worth 50 points, pushups and situps are 15 each, and waist-to-height ratio is 20." />
+          <FitnessNote title="Scoring" detail=" Run is 50 points, hand-release push-ups and sit-ups are 15 each, and waist-to-height ratio is 20." />
           <FitnessNote title="Waist-to-height" detail="The calculator divides waist by height, rounds to two decimals, then applies the chart points." />
           <FitnessNote title="Passing" detail="A composite score of 75 or higher is marked passing; 90 or higher is marked excellent." />
         </div>
