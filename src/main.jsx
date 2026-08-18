@@ -32,6 +32,8 @@ const weeklyObjectives = [
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
+const showDetachmentUniformSop = false
+const showTd0Checklist = false
 
 const td0Flyers = [
   {
@@ -405,7 +407,7 @@ function Panel({ title, icon, children, action }) {
     <section className="rounded border border-brass/18 bg-ink/95 p-5 shadow-gold">
       <div className={`${children ? "mb-4" : ""} flex flex-wrap items-center justify-between gap-3`}>
         <h2 className="flex items-center gap-3 text-xl font-black text-parchment">
-          <FlaticonIcon name={icon} size={22} />
+          {icon && <FlaticonIcon name={icon} size={22} />}
           {title}
         </h2>
         {action}
@@ -455,33 +457,37 @@ function Td0Page() {
           }
         />
       </div>
-      <Panel
-        title="Detachment Uniform SOP"
-        icon="shirt"
-        action={
-          <a
-            href={td0UniformPdf}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
-          >
-            <FlaticonIcon name="file" size={16} />
-            Open PDF
-          </a>
-        }
-      />
-      <Panel
-        title="TD-0 Checklist"
-        icon="checkbox"
-        action={
-          <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
-            <FlaticonIcon name="print" size={16} />
-            Print
-          </button>
-        }
-      >
-        <ChecklistGrid items={td0ChecklistItems} />
-      </Panel>
+      {showDetachmentUniformSop && (
+        <Panel
+          title="Detachment Uniform SOP"
+          icon="shirt"
+          action={
+            <a
+              href={td0UniformPdf}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+            >
+              <FlaticonIcon name="file" size={16} />
+              Open PDF
+            </a>
+          }
+        />
+      )}
+      {showTd0Checklist && (
+        <Panel
+          title="TD-0 Checklist"
+          icon="checkbox"
+          action={
+            <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
+              <FlaticonIcon name="print" size={16} />
+              Print
+            </button>
+          }
+        >
+          <ChecklistGrid items={td0ChecklistItems} />
+        </Panel>
+      )}
     </div>
   )
 }
@@ -548,7 +554,7 @@ function Td0FlyerCard({ flyer }) {
           >
             <div className="flex items-center justify-between gap-3 border-b border-brass/20 bg-field px-5 py-3">
               <h3 className="flex items-center gap-2 text-lg font-black text-parchment">
-                <FlaticonIcon name={flyer.icon} size={18} className="text-brass" />
+                {flyer.icon && <FlaticonIcon name={flyer.icon} size={18} className="text-brass" />}
                 {flyer.title}
               </h3>
               <button
@@ -576,7 +582,6 @@ function WeeklyPage() {
       <Td0FlyerCard
         flyer={{
           title: "TD-0",
-          icon: "trophy",
           src: td0Flyers[0].src
         }}
       />
@@ -758,21 +763,23 @@ function DrillVideoCard({ resource, embed }) {
 function UniformPage() {
   return (
     <div className="grid gap-6">
-      <Panel
-        title="Detachment Uniform SOP"
-        icon="shirt"
-        action={
-          <a
-            href={td0UniformPdf}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
-          >
-            <FlaticonIcon name="file" size={16} />
-            Open PDF
-          </a>
-        }
-      />
+      {showDetachmentUniformSop && (
+        <Panel
+          title="Detachment Uniform SOP"
+          icon="shirt"
+          action={
+            <a
+              href={td0UniformPdf}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+            >
+              <FlaticonIcon name="file" size={16} />
+              Open PDF
+            </a>
+          }
+        />
+      )}
       <UniformGuide title="DAFI 36-2903" pdf={uniformPdf} pdfVar="uniformPdf" />
     </div>
   )
