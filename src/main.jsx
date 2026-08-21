@@ -135,19 +135,19 @@ const outlookCalendarUrl = "https://outlook.office365.com/calendar/published/b02
 const dodmerbSteps = [
   {
     title: "Create account",
-    detail: "Use the DODMERB PDF sent out earlier this year as a starting point."
+    detail: "As you register in WINGS, you will get a email with the domain of health.mil. This email will include all the instructions needed to register for DMACS and create your account."
   },
   {
-    title: "Schedule exams",
-    detail: "Use the DODMERB PDF sent out earlier this year as a starting point.."
+    title: "Medical Questionnaire",
+    detail: "You will have to fill out a medical history questionnaire. Fill it out as promptly as possible."
+  },
+  {
+    title: "Schedule Appointments",
+    detail: "Schedule your appointments as soon as possible. The sooner you schedule, the sooner you will be cleared."
   },
   {
     title: "Track remedials",
-    detail: "Use the DODMERB PDF sent out earlier this year as a starting point."
-  },
-  {
-    title: "Ask for help early",
-    detail: "Use the DODMERB PDF sent out earlier this year as a starting point."
+    detail: "If required, you may have to complete remedial appointments. Track these and complete them as soon as possible."
   }
 ]
 
