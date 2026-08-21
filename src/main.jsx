@@ -83,7 +83,7 @@ const academicBlocks = [
 const drillResources = [
   { title: "FDE Procedures", detail: "", href: "https://www.youtube.com/watch?v=3hwmk0EjjTU" },
   { title: "ORI Procedures", detail: "", href: "https://www.youtube.com/watch?v=igTnT-wqrZ0" },
-  { title: "Drill movements", detail: "", href: "https://www.youtube.com/@AFROTCDET220" }
+  { title: "Drill movements", detail: "", href: "https://www.youtube.com/watch?v=S4QR9E_t7nA&list=PL8PeSdzrOYbnXoBemcwCwKpyx0mHeQPr9" }
 ]
 
 const td0ChecklistItems = [
