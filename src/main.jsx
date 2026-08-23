@@ -9,13 +9,13 @@ import "@flaticon/flaticon-uicons/css/regular/rounded.css"
 import "./styles.css"
 
 const navItems = [
-  { id: "td0", label: "TD-0", icon: "clipboard-list", hidden: false },
+  { id: "td0", label: "TD-0", icon: "clipboard-list", hidden: true },
   { id: "weekly", label: "Weekly", icon: "train-side", hidden: false },
   { id: "academics", label: "Academics", icon: "graduation-cap", hidden: false },
   { id: "drill", label: "Drill", icon: "shield", hidden: false },
   { id: "uniforms", label: "Uniforms", icon: "shirt", hidden: false },
   { id: "checklists", label: "Checklists", icon: "checkbox", hidden: false },
-  { id: "resources", label: "Resources", icon: "folder-open", hidden: false },
+  { id: "resources", label: "Resources", icon: "folder-open", hidden: true },
   { id: "fitness", label: "Fitness", icon: "dumbbell-fitness", hidden: false },
   { id: "dodmerb", label: "DODMERB", icon: "stethoscope", hidden: false },
   { id: "calendar", label: "Calendar", icon: "calendar-days", hidden: false }
@@ -625,6 +625,7 @@ function AcademicsPage() {
               {block.items.map((item, index) => {
                 const label = typeof item === "string" ? item : item.label
                 const href = typeof item === "string" ? undefined : item.href
+                const showIcon = block.title !== "Topics for the week"
                 if (href) {
                   return (
                     <a
@@ -634,14 +635,14 @@ function AcademicsPage() {
                       rel="noreferrer"
                       className="flex items-center gap-2 text-sm font-bold text-bullion underline decoration-brass/40 underline-offset-4 transition hover:text-parchment hover:decoration-bullion"
                     >
-                      <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />
+                      {showIcon && <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />}
                       {label}
                     </a>
                   )
                 }
                 return (
                   <div key={index} className="flex items-center gap-2 text-sm text-parchment/74">
-                    <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />
+                    {showIcon && <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />}
                     {label}
                   </div>
                 )
