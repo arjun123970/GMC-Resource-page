@@ -100,6 +100,7 @@ const td0ChecklistItems = [
 ]
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
+const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2021%20Aug.pdf?TeamsCID=be777d09-6c25-40da-b90b-a77c6971f10e"
 
 const checklistItems = [
   "Pens",
@@ -779,23 +780,21 @@ function DrillVideoCard({ resource, embed }) {
 function UniformPage() {
   return (
     <div className="grid gap-6">
-      {showDetachmentUniformSop && (
-        <Panel
-          title="Detachment Uniform SOP"
-          icon="shirt"
-          action={
-            <a
-              href={td0UniformPdf}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
-            >
-              <FlaticonIcon name="file" size={16} />
-              Open PDF
-            </a>
-          }
-        />
-      )}
+      <Panel
+        title="Det 220 SOP's"
+        icon="file"
+        action={
+          <a
+            href={det220SopsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+          >
+            <FlaticonIcon name="file" size={16} />
+            Open PDF
+          </a>
+        }
+      />
       <UniformGuide title="DAFI 36-2903" pdf={uniformPdf} pdfVar="uniformPdf" />
     </div>
   )
