@@ -913,7 +913,7 @@ function UniformGuide({ title, pdf, pdfVar }) {
 function ChecklistPage() {
   return (
     <Panel
-      title="Printable Checklist"
+      title="Checklist for 8/24"
       icon="checkbox"
       action={
         <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
