@@ -15,7 +15,7 @@ const navItems = [
   { id: "drill", label: "Drill", icon: "shield", hidden: false },
   { id: "uniforms", label: "Uniforms", icon: "shirt", hidden: false },
   { id: "checklists", label: "Checklists", icon: "checkbox", hidden: false },
-  { id: "resources", label: "Resources", icon: "folder-open", hidden: true },
+  { id: "resources", label: "Resources", icon: "folder-open", hidden: false },
   { id: "fitness", label: "Fitness", icon: "dumbbell-fitness", hidden: false },
   { id: "dodmerb", label: "DODMERB", icon: "stethoscope", hidden: false },
   { id: "calendar", label: "Calendar", icon: "calendar-days", hidden: false }
@@ -72,10 +72,12 @@ const academicBlocks = [
   {
     title: "Topics for the week",
     items: [
-      { label: "Topic 1", href: "#" },
-      { label: "Topic 2", href: "#" },
-      { label: "Topic 3", href: "#" },
-      { label: "Topic 4", href: "#" }
+      { label: "3.1 - Define each element of the AFROTC Cadet Honor Code." },
+      { label: "3.2 - Recall procedures for reporting a suspected Cadet Honor Code violation." },
+      { label: "3.3 - Describe common misconceptions and improper applications of the Cadet Honor Code." },
+      { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
+      { label: "6.2 - Demonstrate proper DAF grooming standards." },
+      { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards."},
     ]
   }
 ]
