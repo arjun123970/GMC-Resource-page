@@ -103,14 +103,12 @@ const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/public
 const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2021%20Aug.pdf?TeamsCID=be777d09-6c25-40da-b90b-a77c6971f10e"
 
 const checklistItems = [
-  "Pens",
   "Water bottle",
+  "Conservative Watch",
   "Backpack",
-  "Stando'd quiz papers and note taking sheets",
-  "Clean shaven(for men)",
-  "PCA's ironed and shoes shined",
-  "Phone alarms turned off",
-  "Any additional items that are needed for that specific week we can update as needed"
+  "Clean Shaven(for men)",
+  "Hair within regulations",
+  "Modified PTGs",
 ]
 
 const resourceLibrary = [
