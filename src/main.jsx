@@ -25,9 +25,9 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "Develop Cadet Aptitude, Belief, and Command.",
-  "Foster High Morale and Motivation in incoming class.",
-  "Provide a clear picture of resources and opportunities available for cadets."
+  "1. Improved Uniforms",
+  "2. Customs and Courtesies: Greet by name and rank!",
+  "3. Develop Aptitude in Drill."
 ]
 
 const td0Mission = "To inspire and equip incoming cadets for success in AFROTC through foundational training while demonstrating the high standards of professionalism, excellence, and execution expected of Det 220 Cadets."
