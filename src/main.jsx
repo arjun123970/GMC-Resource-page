@@ -30,8 +30,6 @@ const weeklyObjectives = [
   "3. Develop Aptitude in Drill."
 ]
 
-const td0Mission = "To inspire and equip incoming cadets for success in AFROTC through foundational training while demonstrating the high standards of professionalism, excellence, and execution expected of Det 220 Cadets."
-
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
 const showDetachmentUniformSop = false
 const showTd0Checklist = false
@@ -422,11 +420,6 @@ function Panel({ title, icon, children, action }) {
 function Td0Page() {
   return (
     <div className="grid gap-6">
-      <Panel title="TD-0 Mission Statement">
-        <p className="text-sm font-bold leading-6 text-parchment/82">
-          {td0Mission}
-        </p>
-      </Panel>
       <div className="grid gap-6 lg:grid-cols-2">
         {td0Flyers.map((flyer) => (
           <Td0FlyerCard key={flyer.title} flyer={flyer} />
@@ -592,23 +585,16 @@ function WeeklyPage() {
           src: td0Flyers[0].src
         }}
       />
-      <div className="grid gap-6">
-        <Panel title="TD-0 Mission Statement">
-          <p className="text-sm font-bold leading-6 text-parchment/82">
-            {td0Mission}
-          </p>
-        </Panel>
-        <Panel title="Goals" icon="target">
-          <div className="grid gap-3">
-            {weeklyObjectives.map((objective, index) => (
-              <div key={objective} className="flex items-start gap-3 rounded border border-brass/15 bg-field/72 px-3 py-2.5">
-                <span className="grid size-7 shrink-0 place-items-center rounded bg-bullion text-sm font-black text-obsidian">{index + 1}</span>
-                <span className="text-sm font-bold leading-5 text-parchment/82">{objective}</span>
-              </div>
-            ))}
-          </div>
-        </Panel>
-      </div>
+      <Panel title="Goals" icon="target">
+        <div className="grid gap-3">
+          {weeklyObjectives.map((objective, index) => (
+            <div key={objective} className="flex items-start gap-3 rounded border border-brass/15 bg-field/72 px-3 py-2.5">
+              <span className="grid size-7 shrink-0 place-items-center rounded bg-bullion text-sm font-black text-obsidian">{index + 1}</span>
+              <span className="text-sm font-bold leading-5 text-parchment/82">{objective}</span>
+            </div>
+          ))}
+        </div>
+      </Panel>
     </div>
   )
 }
