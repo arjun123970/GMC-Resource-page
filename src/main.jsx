@@ -2,9 +2,9 @@ import React, { useEffect, useMemo, useState } from "react"
 import { createRoot } from "react-dom/client"
 import faviconImage from "../favicon.png"
 import trainImage from "../images__5_-removebg-preview.png"
-import summerWorkoutPlanPdf from "../Summer Workout Plan F26 (1).pdf"
 import td0OverviewImage from "../IMG_2577.jpeg"
 import td0UniformImage from "../IMG_2578.jpeg"
+import week1FlyerImage from "../Week 1 F26 Morale Newsletter 2.png"
 import "@flaticon/flaticon-uicons/css/regular/rounded.css"
 import "./styles.css"
 
@@ -99,6 +99,7 @@ const td0ChecklistItems = [
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2021%20Aug.pdf?TeamsCID=be777d09-6c25-40da-b90b-a77c6971f10e"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/05.%20Weekly%20OPORDs%20and%20PTs/F26%20OPORD%201%20.pdf?d=wab2aab38993540678b88f536eecbe18b&csf=1&web=1&e=ktFDdM"
 
 const checklistItems = [
   "Water bottle",
@@ -578,23 +579,40 @@ function Td0FlyerCard({ flyer }) {
 
 function WeeklyPage() {
   return (
-    <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr] xl:items-start">
-      <Td0FlyerCard
-        flyer={{
-          title: "TD-0",
-          src: td0Flyers[0].src
-        }}
+    <div className="grid gap-6">
+      <Panel
+        title="Weekly OPORD"
+        icon="file"
+        action={
+          <a
+            href={weeklyOpordUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+          >
+            <FlaticonIcon name="file" size={16} />
+            Open PDF
+          </a>
+        }
       />
-      <Panel title="Goals" icon="target">
-        <div className="grid gap-3">
-          {weeklyObjectives.map((objective, index) => (
-            <div key={objective} className="flex items-start gap-3 rounded border border-brass/15 bg-field/72 px-3 py-2.5">
-              <span className="grid size-7 shrink-0 place-items-center rounded bg-bullion text-sm font-black text-obsidian">{index + 1}</span>
-              <span className="text-sm font-bold leading-5 text-parchment/82">{objective}</span>
-            </div>
-          ))}
-        </div>
-      </Panel>
+      <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr] xl:items-start">
+        <Td0FlyerCard
+          flyer={{
+            title: "Week 1",
+            src: week1FlyerImage
+          }}
+        />
+        <Panel title="Goals" icon="target">
+          <div className="grid gap-3">
+            {weeklyObjectives.map((objective, index) => (
+              <div key={objective} className="flex items-start gap-3 rounded border border-brass/15 bg-field/72 px-3 py-2.5">
+                <span className="grid size-7 shrink-0 place-items-center rounded bg-bullion text-sm font-black text-obsidian">{index + 1}</span>
+                <span className="text-sm font-bold leading-5 text-parchment/82">{objective}</span>
+              </div>
+            ))}
+          </div>
+        </Panel>
+      </div>
     </div>
   )
 }
@@ -971,30 +989,6 @@ function FitnessPage() {
 
   return (
     <div className="grid gap-6">
-      <Panel
-        title="Summer Workout Plan"
-        icon="file"
-        action={
-          <a
-            href={summerWorkoutPlanPdf}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
-          >
-            <FlaticonIcon name="file" size={16} />
-            Open PDF
-          </a>
-        }
-      >
-        <div className="overflow-hidden rounded border border-brass/20 bg-ink">
-          <iframe
-            src={summerWorkoutPlanPdf}
-            title="Summer Workout Plan F26"
-            className="h-[70vh] min-h-[520px] w-full bg-ink"
-          />
-        </div>
-      </Panel>
-
       <Panel title="AFROTC PFA Calculator" icon="calculator">
         <div className="grid gap-5 xl:grid-cols-[1fr_340px]">
           <div className="rounded border border-brass/15 bg-field/72 p-5">
