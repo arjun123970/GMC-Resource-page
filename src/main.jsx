@@ -25,9 +25,9 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "1. Improved Uniforms",
-  "2. Customs and Courtesies: Greet by name and rank!",
-  "3. Develop Aptitude in Drill."
+  "Improved Uniforms",
+  "Customs and Courtesies: Greet by name and rank!",
+  "Develop Aptitude in Drill."
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
