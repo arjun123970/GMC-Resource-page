@@ -102,12 +102,13 @@ const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/
 const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/05.%20Weekly%20OPORDs%20and%20PTs/F26%20OPORD%201%20.pdf?d=wab2aab38993540678b88f536eecbe18b&csf=1&web=1&e=ktFDdM"
 
 const checklistItems = [
-  "Water bottle",
+  "Perfect PCAs/OCPs",
   "Conservative Watch",
   "Backpack",
   "Clean Shaven(for men)",
   "Hair within regulations",
-  "Modified PTGs",
+  "Note-taking material",
+  "Phone alarms turned off and silenced",
 ]
 
 const resourceLibrary = [
@@ -917,7 +918,7 @@ function UniformGuide({ title, pdf, pdfVar }) {
 function ChecklistPage() {
   return (
     <Panel
-      title="Checklist for 8/24"
+      title="Checklist for 8/27"
       icon="checkbox"
       action={
         <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
