@@ -113,13 +113,14 @@ const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/
 const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%202.pdf?d=w382fdd0f11d84459add8b2f3f381712b&csf=1&web=1&e=ikldxw"
 
 const checklistItems = [
-  "Perfect PCAs/OCPs",
+  "Civilian PTG's",
   "Conservative Watch",
-  "Backpack",
+  "Backpack(make sure it is in the correct color)",
   "Clean Shaven(for men)",
   "Hair within regulations",
-  "Note-taking material",
-  "Phone alarms turned off and silenced",
+  "Tucked in shoe laces",
+  "If applicable: tuck in necklaces/remove them",
+  "Stando'd water bottle",
 ]
 
 const resourceLibrary = [
@@ -214,6 +215,11 @@ function youtubeEmbedUrl(href) {
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
+}
+
+function splitTopicLabel(label) {
+  const match = String(label).match(/^(\d+\.\d+)\s*[-–—]\s*(.*)$/)
+  return match ? { code: match[1], text: match[2] } : { code: null, text: label }
 }
 
 function timeToSeconds(value) {
@@ -630,41 +636,66 @@ function WeeklyPage() {
 }
 
 function AcademicsPage() {
+  const topicBlock = academicBlocks.find((block) => block.title === "Topics for the week")
+  const linkBlocks = academicBlocks.filter((block) => block.title !== "Topics for the week")
+
   return (
     <Panel title="Academics Study Page" icon="graduation-cap">
-      <div className="grid gap-4 md:grid-cols-3">
-        {academicBlocks.map((block) => (
-          <div key={block.title} className="rounded border border-brass/15 bg-field/72 p-4">
-            <h3 className="text-lg font-black text-parchment">{block.title}</h3>
-            <div className="mt-4 space-y-2">
-              {block.items.map((item, index) => {
-                const label = typeof item === "string" ? item : item.label
-                const href = typeof item === "string" ? undefined : item.href
-                const showIcon = block.title !== "Topics for the week"
-                if (href) {
+      <div className="grid gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
+          {linkBlocks.map((block) => (
+            <div key={block.title} className="rounded border border-brass/15 bg-field/72 p-4">
+              <h3 className="text-lg font-black text-parchment">{block.title}</h3>
+              <div className="mt-4 space-y-2">
+                {block.items.map((item, index) => {
+                  const label = typeof item === "string" ? item : item.label
+                  const href = typeof item === "string" ? undefined : item.href
+                  if (href) {
+                    return (
+                      <a
+                        key={index}
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-2 text-sm font-bold text-bullion underline decoration-brass/40 underline-offset-4 transition hover:text-parchment hover:decoration-bullion"
+                      >
+                        <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />
+                        {label}
+                      </a>
+                    )
+                  }
                   return (
-                    <a
-                      key={index}
-                      href={href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 text-sm font-bold text-bullion underline decoration-brass/40 underline-offset-4 transition hover:text-parchment hover:decoration-bullion"
-                    >
-                      {showIcon && <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />}
+                    <div key={index} className="flex items-center gap-2 text-sm text-parchment/74">
+                      <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />
                       {label}
-                    </a>
+                    </div>
                   )
-                }
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+        {topicBlock && (
+          <div className="rounded border border-brass/15 bg-field/72 p-4">
+            <h3 className="text-lg font-black text-parchment">{topicBlock.title}</h3>
+            <div className="mt-3 grid gap-x-5 gap-y-1.5 sm:grid-cols-2">
+              {topicBlock.items.map((item, index) => {
+                const label = typeof item === "string" ? item : item.label
+                const { code, text } = splitTopicLabel(label)
                 return (
-                  <div key={index} className="flex items-center gap-2 text-sm text-parchment/74">
-                    {showIcon && <FlaticonIcon name="book-open-cover" size={15} className="text-brass" />}
-                    {label}
+                  <div key={index} className="flex items-start gap-2 text-[13px] leading-snug text-parchment/74">
+                    {code ? (
+                      <span className="mt-px shrink-0 rounded bg-bullion/18 px-1.5 py-0.5 text-[11px] font-black leading-none text-black">
+                        {code}
+                      </span>
+                    ) : null}
+                    <span>{text}</span>
                   </div>
                 )
               })}
             </div>
           </div>
-        ))}
+        )}
       </div>
     </Panel>
   )
@@ -929,7 +960,7 @@ function UniformGuide({ title, pdf, pdfVar }) {
 function ChecklistPage() {
   return (
     <Panel
-      title="Checklist for 8/27"
+      title="Checklist for 8/31"
       icon="checkbox"
       action={
         <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
