@@ -70,12 +70,23 @@ const academicBlocks = [
   {
     title: "Topics for the week",
     items: [
-      { label: "3.1 - Define each element of the AFROTC Cadet Honor Code." },
-      { label: "3.2 - Recall procedures for reporting a suspected Cadet Honor Code violation." },
-      { label: "3.3 - Describe common misconceptions and improper applications of the Cadet Honor Code." },
+      { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets to peers, superiors, and subordinates." },
+      { label: "4.2 - Practice proper forms of saluting and recognize who and when to salute." },
+      { label: "4.3 - Practice reporting in/reporting out procedures(BC only)" },
       { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
+      { label: "4.5 - Recall procedures for proper display of the flag" },
+      { label: "4.6 - Describe proper customs and courtesies for outdoor ceremonies"},
+      { label: "4.7 - Describe proper customs and courtesies for indoor ceremonies" },
+      { label: "4.8 - Paraphrase proper procedures for folding the flag" },
+      { label: "4.9 - Describe proper procedures for retreat" },
+      { label: "4.10 - Describe proper procedures for reveille" },
+      { label: "6.1 - List when it is inappropriate to wear your uniform" },
       { label: "6.2 - Demonstrate proper DAF grooming standards." },
-      { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards."},
+      { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards." },
+      { label: "7.1 - Demonstrate drill fundamentals" },
+      { label: "7.2 - Demonstrate individual drill instruction" },
+      { label: "7.3 - Demonstrate basic drill of the flight" },
+      { label: "7.6 - Demonstrate proper guidon positioning, commands, and movements. (BCL ONLY)" },
     ]
   }
 ]
