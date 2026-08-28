@@ -110,7 +110,7 @@ const td0ChecklistItems = [
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2021%20Aug.pdf?TeamsCID=be777d09-6c25-40da-b90b-a77c6971f10e"
-const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/05.%20Weekly%20OPORDs%20and%20PTs/F26%20OPORD%201%20.pdf?d=wab2aab38993540678b88f536eecbe18b&csf=1&web=1&e=ktFDdM"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%202.pdf?d=w382fdd0f11d84459add8b2f3f381712b&csf=1&web=1&e=ikldxw"
 
 const checklistItems = [
   "Perfect PCAs/OCPs",
