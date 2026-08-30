@@ -111,6 +111,7 @@ const td0ChecklistItems = [
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2021%20Aug.pdf?TeamsCID=be777d09-6c25-40da-b90b-a77c6971f10e"
 const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%202.pdf?d=w382fdd0f11d84459add8b2f3f381712b&csf=1&web=1&e=ikldxw"
+const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const checklistItems = [
   "Civilian PTG's",
@@ -144,6 +145,7 @@ const resourceLibrary = [
 ]
 
 const outlookCalendarUrl = "https://outlook.office365.com/calendar/published/b02bb9e20ae947ababa2ba82084ccbbf@purdue.edu/f107ebc640be40e4b2902ebe442c1f8711563787882679947947/calendar.html"
+const outlookCalendarIcsUrl = "https://outlook.office365.com/owa/calendar/b02bb9e20ae947ababa2ba82084ccbbf@purdue.edu/f107ebc640be40e4b2902ebe442c1f8711563787882679947947/calendar.ics"
 
 const dodmerbSteps = [
   {
@@ -620,16 +622,31 @@ function WeeklyPage() {
             src: week1FlyerImage
           }}
         />
-        <Panel title="Goals" icon="target">
-          <div className="grid gap-3">
-            {weeklyObjectives.map((objective, index) => (
-              <div key={objective} className="flex items-start gap-3 rounded border border-brass/15 bg-field/72 px-3 py-2.5">
-                <span className="grid size-7 shrink-0 place-items-center rounded bg-bullion text-sm font-black text-obsidian">{index + 1}</span>
-                <span className="text-sm font-bold leading-5 text-parchment/82">{objective}</span>
-              </div>
-            ))}
-          </div>
-        </Panel>
+        <div className="grid gap-6">
+          <Panel title="Goals" icon="target">
+            <div className="grid gap-3">
+              {weeklyObjectives.map((objective, index) => (
+                <div key={objective} className="flex items-start gap-3 rounded border border-brass/15 bg-field/72 px-3 py-2.5">
+                  <span className="grid size-7 shrink-0 place-items-center rounded bg-bullion text-sm font-black text-obsidian">{index + 1}</span>
+                  <span className="text-sm font-bold leading-5 text-parchment/82">{objective}</span>
+                </div>
+              ))}
+            </div>
+          </Panel>
+          <Panel
+            title="Cadet Shoutout Form"
+            action={
+              <a
+                href={cadetShoutoutFormUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+              >
+                Open Form
+              </a>
+            }
+          />
+        </div>
       </div>
     </div>
   )
@@ -1143,29 +1160,44 @@ function DodmerbPage() {
 
 function CalendarPage() {
   return (
-    <Panel
-      title="Outlook Calendar"
-      icon="calendar-days"
-      action={
-        <a
-          href={outlookCalendarUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
-        >
-          <FlaticonIcon name="calendar-days" size={16} />
-          Open in new tab
-        </a>
-      }
-    >
-      <div className="overflow-hidden rounded border border-brass/20 bg-ink">
-        <iframe
-          src={outlookCalendarUrl}
-          title="Detachment 220 Outlook calendar"
-          className="h-[70vh] min-h-[520px] w-full bg-white"
-        />
-      </div>
-    </Panel>
+    <div className="grid gap-6">
+      <Panel
+        title="Outlook ICS link"
+        action={
+          <a
+            href={outlookCalendarIcsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+          >
+            Open link
+          </a>
+        }
+      />
+      <Panel
+        title="Outlook Calendar"
+        icon="calendar-days"
+        action={
+          <a
+            href={outlookCalendarUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]"
+          >
+            <FlaticonIcon name="calendar-days" size={16} />
+            Open in new tab
+          </a>
+        }
+      >
+        <div className="overflow-hidden rounded border border-brass/20 bg-ink">
+          <iframe
+            src={outlookCalendarUrl}
+            title="Detachment 220 Outlook calendar"
+            className="h-[70vh] min-h-[520px] w-full bg-white"
+          />
+        </div>
+      </Panel>
+    </div>
   )
 }
 
