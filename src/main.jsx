@@ -1162,7 +1162,7 @@ function CalendarPage() {
   return (
     <div className="grid gap-6">
       <Panel
-        title="Outlook ICS link"
+        title="Outlook ICS link(upload to your calendar to sync all AFROTC events with your personal calendar)"
         action={
           <a
             href={outlookCalendarIcsUrl}
