@@ -4,7 +4,7 @@ import faviconImage from "../favicon.png"
 import trainImage from "../images__5_-removebg-preview.png"
 import td0OverviewImage from "../IMG_2577.jpeg"
 import td0UniformImage from "../IMG_2578.jpeg"
-import week1FlyerImage from "../Week 1 F26 Morale Newsletter 2.png"
+import caldwellCommuniquePdf from "../The Caldwell Communique.pdf"
 import "@flaticon/flaticon-uicons/css/regular/rounded.css"
 import "./styles.css"
 
@@ -616,12 +616,7 @@ function WeeklyPage() {
         }
       />
       <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr] xl:items-start">
-        <Td0FlyerCard
-          flyer={{
-            title: "Week 1",
-            src: week1FlyerImage
-          }}
-        />
+        <UniformGuide title="Morale PDF" pdf={caldwellCommuniquePdf} icon="file" />
         <div className="grid gap-6">
           <Panel title="Goals" icon="target">
             <div className="grid gap-3">
@@ -862,7 +857,7 @@ function UniformPage() {
   )
 }
 
-function UniformGuide({ title, pdf, pdfVar }) {
+function UniformGuide({ title, pdf, pdfVar, icon = "shirt" }) {
   const [expanded, setExpanded] = useState(false)
 
   useEffect(() => {
@@ -881,7 +876,7 @@ function UniformGuide({ title, pdf, pdfVar }) {
   return (
     <Panel
       title={title}
-      icon="shirt"
+      icon={icon}
       action={
         pdf && (
           <a
@@ -941,7 +936,7 @@ function UniformGuide({ title, pdf, pdfVar }) {
           >
             <div className="flex items-center justify-between gap-3 border-b border-brass/20 bg-field px-5 py-3">
               <h3 className="flex items-center gap-2 text-lg font-black text-parchment">
-                <FlaticonIcon name="shirt" size={18} className="text-brass" />
+                <FlaticonIcon name={icon} size={18} className="text-brass" />
                 {title}
               </h3>
               <button
