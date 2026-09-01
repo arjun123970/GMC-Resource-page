@@ -25,9 +25,9 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "Improved Uniforms",
-  "Customs and Courtesies: Greet by name and rank!",
-  "Develop Aptitude in Drill."
+  "Uniforms and Grooming Standards must be met. Be checking over your wingmen at all times. AS200s especially, you know what the standards are so lets set the bar high!",
+  "Academics and Drill: On your own, you should be honing in on key academics and drill concepts that we've discussed. Make sure you're showing up prepared and giving your best each day you show up. Flight commanders should be focusing primarily on concepts that we can't practice outside of group settings during flight meetings.",
+  "Morale: Don't let it fade! This is where we'll truly be tested as a class. Its easy to keep motivation and spirits high when everyone has plenty of time and enjoys the activities we're doing, but when things get hard there's a tendency for that motivation to fade. These next days, weeks, and months will be hard. One of the primary ways we'll get through it is by motivating each other to embrace discomfort and keep working even when we are exhausted. Be the wingman to your peers that you want for yourself!"
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
