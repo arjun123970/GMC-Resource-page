@@ -123,6 +123,7 @@ const checklistItems = [
   "Standardized quiz and note paper",
   "Stando'd water bottle",
   "Ironed pants",
+  "Everything is aligned onto your gig line",
 ]
 
 const resourceLibrary = [
