@@ -114,14 +114,15 @@ const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachm
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const checklistItems = [
-  "Civilian PTG's",
+  "OCP's/PCA's",
   "Conservative Watch",
   "Backpack(make sure it is in the correct color)",
   "Clean Shaven(for men)",
   "Hair within regulations",
-  "Tucked in shoe laces",
-  "If applicable: tuck in necklaces/remove them",
+  "Shined Shoes(PCA's)",
+  "Standardized quiz and note paper",
   "Stando'd water bottle",
+  "Ironed pants",
 ]
 
 const resourceLibrary = [
@@ -972,7 +973,7 @@ function UniformGuide({ title, pdf, pdfVar, icon = "shirt" }) {
 function ChecklistPage() {
   return (
     <Panel
-      title="Checklist for 8/31"
+      title="Checklist for 9/3"
       icon="checkbox"
       action={
         <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
