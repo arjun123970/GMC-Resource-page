@@ -46,4 +46,8 @@ button {
     display: grid !important;
     gap: 12px !important;
   }
+
+  body.print-one section:not(.print-target) {
+    display: none !important;
+  }
 }

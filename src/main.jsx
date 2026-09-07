@@ -25,9 +25,9 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "Uniforms and Grooming Standards must be met. Be checking over your wingmen at all times. AS200s especially, you know what the standards are so lets set the bar high!",
-  "Academics and Drill: On your own, you should be honing in on key academics and drill concepts that we've discussed. Make sure you're showing up prepared and giving your best each day you show up. Flight commanders should be focusing primarily on concepts that we can't practice outside of group settings during flight meetings.",
-  "Morale: Don't let it fade! This is where we'll truly be tested as a class. Its easy to keep motivation and spirits high when everyone has plenty of time and enjoys the activities we're doing, but when things get hard there's a tendency for that motivation to fade. These next days, weeks, and months will be hard. One of the primary ways we'll get through it is by motivating each other to embrace discomfort and keep working even when we are exhausted. Be the wingman to your peers that you want for yourself!"
+  "Accountability: In both the GMC channel and your individual flight channels, you should be reacting to all messages to show that you've read and understand the message in its entirety. If you have questions or are confused on anything, ask your flightmates!",
+  "Aptitude: This upcoming LLAB features new concepts such as transitory and other procedures. Last week was a great start, but just an introduction: it will only get harder from here. Embrace discomfort! Take the extra time to study this week and set yourself up great for the rest of the semester.",
+  "Communication: Passion about the Det and AFROTC is awesome, and we want to continue this. That being said, at times it can be overwhelming to receive communications all the time and have work bleed into social life and other spheres: the last thing we want is to burn out early! This is the approach we've been taking as a GMC Staff, and I want to forward this to the entirety of our class as well. As such, AFROTC related communications should be conducted primarily within business hours of 0900-1700 Mon-Fri, with the exception of urgent or time-dependent communications. If it can wait until the next day during business hours, just wait until then; separation between work and everything else will be vital to maintaining a passionate, healthy, and driven class."
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
@@ -115,7 +115,18 @@ const det220SopsUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachme
 const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%203.pdf?d=w9ca60fe8989d49f2adc8d588d8f159af&csf=1&web=1&e=0w4Wdh"
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
-const checklistItems = [
+const ptChecklistItems = [
+  "Civilian PTG's",
+  "Conservative Watch",
+  "Backpack(make sure it is in the correct color)",
+  "Clean Shaven(for men)",
+  "Hair within regulations",
+  "Tucked in shoe laces",
+  "If applicable: tuck in necklaces/remove them",
+  "Stando'd water bottle",
+]
+
+const llabChecklistItems = [
   "OCP's/PCA's",
   "Conservative Watch",
   "Backpack(make sure it is in the correct color)",
@@ -427,9 +438,9 @@ function Hero({ active }) {
   )
 }
 
-function Panel({ title, icon, children, action }) {
+function Panel({ title, icon, children, action, id }) {
   return (
-    <section className="rounded border border-brass/18 bg-ink/95 p-5 shadow-gold">
+    <section id={id} className="rounded border border-brass/18 bg-ink/95 p-5 shadow-gold">
       <div className={`${children ? "mb-4" : ""} flex flex-wrap items-center justify-between gap-3`}>
         <h2 className="flex items-center gap-3 text-xl font-black text-parchment">
           {icon && <FlaticonIcon name={icon} size={22} />}
@@ -973,19 +984,46 @@ function UniformGuide({ title, pdf, pdfVar, icon = "shirt" }) {
   )
 }
 
+function printChecklist(id) {
+  const panel = document.getElementById(id)
+  if (!panel) {
+    window.print()
+    return
+  }
+  const cleanup = () => {
+    document.body.classList.remove("print-one")
+    panel.classList.remove("print-target")
+    window.removeEventListener("afterprint", cleanup)
+  }
+  panel.classList.add("print-target")
+  document.body.classList.add("print-one")
+  window.addEventListener("afterprint", cleanup)
+  window.print()
+}
+
 function ChecklistPage() {
   return (
+    <div className="grid gap-6">
+      <ChecklistPanel id="pt-checklist" title="PT Checklist" items={ptChecklistItems} />
+      <ChecklistPanel id="llab-checklist" title="LLAB Checklist" items={llabChecklistItems} />
+    </div>
+  )
+}
+
+function ChecklistPanel({ id, title, items }) {
+  return (
     <Panel
-      title="Checklist for 9/3"
+      id={id}
+      title={title}
       icon="checkbox"
       action={
-        <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
+        <button onClick={() => printChecklist(id)} className="inline-flex items-center gap-2 rounded bg-bullion px-4 py-2 text-sm font-black text-obsidian transition hover:bg-[#efd28c]">
           <FlaticonIcon name="print" size={16} />
           Print
         </button>
       }
     >
-      <ChecklistGrid items={checklistItems} />
+      <ChecklistGrid items={items} />
     </Panel>
   )
 }
