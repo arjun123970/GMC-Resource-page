@@ -4,7 +4,7 @@ import faviconImage from "../favicon.png"
 import trainImage from "../images__5_-removebg-preview.png"
 import td0OverviewImage from "../IMG_2577.jpeg"
 import td0UniformImage from "../IMG_2578.jpeg"
-import caldwellCommuniquePdf from "../The Caldwell Communique.pdf"
+import caldwellCommuniquePdf from "../The Caldwell Communique 2 4.pdf"
 import "@flaticon/flaticon-uicons/css/regular/rounded.css"
 import "./styles.css"
 
@@ -70,23 +70,25 @@ const academicBlocks = [
   {
     title: "Topics for the week",
     items: [
-      { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets to peers, superiors, and subordinates." },
+      { label: "1.1 - Identify DAF enlisted grade structure by insignia and name.(BC only)" },
+      { label: "1.2 - Identify DAF & Joint officer grade structure by insignia and name.(BC only)" },
+      { label: "1.3 - Identify AFROTC grade structure.(BC only)" },
+      { label: "2.1 - List the current DAF and AFROTC chain of command.(BC only)" },
+      { label: "2.2 - Summarize the chain of command from the President of the United States to you as a cadet.(BCL only)" },
+      { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets topeers, superiors, and subordinates."},
       { label: "4.2 - Practice proper forms of saluting and recognize who and when to salute." },
-      { label: "4.3 - Practice reporting in/reporting out procedures(BC only)" },
+      { label: "4.3 - Practice reporting in/reporting out procedures.(BCL only)" },
       { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
-      { label: "4.5 - Recall procedures for proper display of the flag" },
-      { label: "4.6 - Describe proper customs and courtesies for outdoor ceremonies"},
-      { label: "4.7 - Describe proper customs and courtesies for indoor ceremonies" },
-      { label: "4.8 - Paraphrase proper procedures for folding the flag" },
-      { label: "4.9 - Describe proper procedures for retreat" },
-      { label: "4.10 - Describe proper procedures for reveille" },
-      { label: "6.1 - List when it is inappropriate to wear your uniform" },
+      { label: "4.5 - Recall procedures for proper display of the flag." },
+      { label: "4.8 - Paraphrase proper procedures for folding the flag." },
+      { label: "6.1 - List when it is inappropriate to wear your uniform." },
       { label: "6.2 - Demonstrate proper DAF grooming standards." },
       { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards." },
       { label: "7.1 - Demonstrate drill fundamentals" },
       { label: "7.2 - Demonstrate individual drill instruction" },
       { label: "7.3 - Demonstrate basic drill of the flight" },
       { label: "7.6 - Demonstrate proper guidon positioning, commands, and movements. (BCL ONLY)" },
+      { label: "7.10 - Demonstrate proper road guard procedures." }
     ]
   }
 ]
