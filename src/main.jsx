@@ -112,7 +112,7 @@ const td0ChecklistItems = [
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/01.%20Det%20220%20Policy%20and%20Reference%20Docs/2.%20F26%20SOPs%20-%20CAO21Aug26.pdf?d=wd5a9c815ce2841ed87144caeefd38b79&csf=1&web=1&e=ce556c"
-const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%202.pdf?d=w382fdd0f11d84459add8b2f3f381712b&csf=1&web=1&e=ikldxw"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%203.pdf?d=w9ca60fe8989d49f2adc8d588d8f159af&csf=1&web=1&e=0w4Wdh"
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const checklistItems = [
