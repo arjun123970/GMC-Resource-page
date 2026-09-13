@@ -25,9 +25,9 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "Accountability: In both the GMC channel and your individual flight channels, you should be reacting to all messages to show that you've read and understand the message in its entirety. If you have questions or are confused on anything, ask your flightmates!",
-  "Aptitude: This upcoming LLAB features new concepts such as transitory and other procedures. Last week was a great start, but just an introduction: it will only get harder from here. Embrace discomfort! Take the extra time to study this week and set yourself up great for the rest of the semester.",
-  "Communication: Passion about the Det and AFROTC is awesome, and we want to continue this. That being said, at times it can be overwhelming to receive communications all the time and have work bleed into social life and other spheres: the last thing we want is to burn out early! This is the approach we've been taking as a GMC Staff, and I want to forward this to the entirety of our class as well. As such, AFROTC related communications should be conducted primarily within business hours of 0900-1700 Mon-Fri, with the exception of urgent or time-dependent communications. If it can wait until the next day during business hours, just wait until then; separation between work and everything else will be vital to maintaining a passionate, healthy, and driven class."
+  "AS100s, You can mess up! know this feels counterintuitive, but we as a staff and the Det as a whole want you to take chances and volunteer for positions you may feel uncomfortable with. You can mess up, that is the best way to learn. You may get yelled at in the moment, but embrace that as it'll lead to so much growth in the long run.",
+  "AS200s, Address Complacency. The fall semester of the AS200 year can be difficult: it feels like we are redoing everything and are relatively overlooked as the sort of middle child of the program. As such, we as an AS200 class have gotten relaxed and started to forget procedures and drill. AS200s SI attendance has been lacking, we are making too many mistakes during LLAB, and our morale as a class could be much better. We're supposed to be leading the AS100s by example, and there's too many instances where we are simply just rusty. The good news is that we can turn this around very quickly. For an AS200, this semester can either be spent going through the motions of procedures we've already learned or can be viewed as an amazing opportunity for leadership development. One practical goal to this end is increased AS200 SI attendance. Our intent as a staff is to have SI be a time for 100s to learn foundational competencies and 200s to learn how to lead and empower their peers.",
+  "GMC as a Whole, Cohesion. Next semester the AS100s and AS200s will be split up, this is a unique opportunity for us to build each other up and be united as a GMC class. The AS100 and AS200 classes have been too isolated from one another lately, which has led to some of the issues mentioned above. Lets take advantage of this time and be intentional about fostering morale, aptitude, and a love for the program that we've never seen before in the GMC!"
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
@@ -77,18 +77,15 @@ const academicBlocks = [
       { label: "2.2 - Summarize the chain of command from the President of the United States to you as a cadet.(BCL only)" },
       { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets topeers, superiors, and subordinates."},
       { label: "4.2 - Practice proper forms of saluting and recognize who and when to salute." },
-      { label: "4.3 - Practice reporting in/reporting out procedures.(BCL only)" },
       { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
-      { label: "4.5 - Recall procedures for proper display of the flag." },
-      { label: "4.8 - Paraphrase proper procedures for folding the flag." },
-      { label: "6.1 - List when it is inappropriate to wear your uniform." },
       { label: "6.2 - Demonstrate proper DAF grooming standards." },
       { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards." },
       { label: "7.1 - Demonstrate drill fundamentals" },
       { label: "7.2 - Demonstrate individual drill instruction" },
       { label: "7.3 - Demonstrate basic drill of the flight" },
       { label: "7.6 - Demonstrate proper guidon positioning, commands, and movements. (BCL ONLY)" },
-      { label: "7.10 - Demonstrate proper road guard procedures." }
+      { label: "7.10 - Demonstrate proper road guard procedures." },
+      { label: "8.6 - Employ risk management principles and execute operations safely." },
     ]
   }
 ]
@@ -112,7 +109,7 @@ const td0ChecklistItems = [
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/01.%20Det%20220%20Policy%20and%20Reference%20Docs/2.%20F26%20SOPs%20-%20CAO21Aug26.pdf?d=wd5a9c815ce2841ed87144caeefd38b79&csf=1&web=1&e=ce556c"
-const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%203.pdf?d=w9ca60fe8989d49f2adc8d588d8f159af&csf=1&web=1&e=0w4Wdh"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%204.pdf?d=w1747d307c3ac4d3796bac9e98bfe28f5&csf=1&web=1&e=Fvbj1v"
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const ptChecklistItems = [
