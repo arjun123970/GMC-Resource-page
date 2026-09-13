@@ -63,7 +63,7 @@ const academicBlocks = [
     items: [
       { label: "SI PPTX", href: "https://purdue0.sharepoint.com/:f:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/GMC/SI?d=w63159262ba964ef4953d75407762ced5&csf=1&web=1&e=ZoFjOH" },
       { label: "LLAB PPTX", href: "https://purdue0.sharepoint.com/:f:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/GMC/LLAB%20Slides?d=wfac3d66edd434c2fb66a34b467906394&csf=1&web=1&e=nhyRxn" },
-      { label: "Quiz Answers PPTX", href: "#" },
+      { label: "Quiz Answers PPTX", href: "https://purdue0.sharepoint.com/:p:/s/AFROTCDetachment220-GMC/IQAz7TVE8UTFT6NMoLBzxChrAUFcgZxv18UDpqFSvNEeoxw?e=ETAXBL" },
       { label: "Archived PDFs from previous weeks", href: "#" }
     ]
   },
