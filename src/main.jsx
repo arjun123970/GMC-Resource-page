@@ -70,22 +70,14 @@ const academicBlocks = [
   {
     title: "Topics for the week",
     items: [
-      { label: "1.1 - Identify DAF enlisted grade structure by insignia and name.(BC only)" },
-      { label: "1.2 - Identify DAF & Joint officer grade structure by insignia and name.(BC only)" },
-      { label: "1.3 - Identify AFROTC grade structure.(BC only)" },
-      { label: "2.1 - List the current DAF and AFROTC chain of command.(BC only)" },
-      { label: "2.2 - Summarize the chain of command from the President of the United States to you as a cadet.(BCL only)" },
       { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets topeers, superiors, and subordinates."},
       { label: "4.2 - Practice proper forms of saluting and recognize who and when to salute." },
       { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
       { label: "6.2 - Demonstrate proper DAF grooming standards." },
-      { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards." },
-      { label: "7.1 - Demonstrate drill fundamentals" },
-      { label: "7.2 - Demonstrate individual drill instruction" },
-      { label: "7.3 - Demonstrate basic drill of the flight" },
-      { label: "7.6 - Demonstrate proper guidon positioning, commands, and movements. (BCL ONLY)" },
-      { label: "7.10 - Demonstrate proper road guard procedures." },
-      { label: "8.6 - Employ risk management principles and execute operations safely." },
+      { label: "8.1 - Demonstrate effective followership" },
+      { label: "8.2 - Demonstrate effective team leadership" },
+      { label: "8.4 - Demonstrate the principles of an effective debrief(BCL ONLY)" },
+      { label: "8.9 - Practice Leadership Evaluation Using the Form 2" },
     ]
   }
 ]
@@ -108,8 +100,8 @@ const td0ChecklistItems = [
 ]
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
-const det220SopsUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/01.%20Det%20220%20Policy%20and%20Reference%20Docs/2.%20F26%20SOPs%20-%20CAO21Aug26.pdf?d=wd5a9c815ce2841ed87144caeefd38b79&csf=1&web=1&e=ce556c"
-const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%204.pdf?d=w1747d307c3ac4d3796bac9e98bfe28f5&csf=1&web=1&e=Fvbj1v"
+const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2023%20Sep.pdf?TeamsCID=15f76f4a-5662-4ec3-a3da-8131701aa5a5"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%206.pdf?TeamsCID=64aa124a-626b-47c2-9974-00eef759c069"
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const ptChecklistItems = [
