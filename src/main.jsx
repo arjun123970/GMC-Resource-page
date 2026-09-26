@@ -4,7 +4,7 @@ import faviconImage from "../favicon.png"
 import trainImage from "../images__5_-removebg-preview.png"
 import td0OverviewImage from "../IMG_2577.jpeg"
 import td0UniformImage from "../IMG_2578.jpeg"
-import caldwellCommuniquePdf from "../The Caldwell Communique 2 4.pdf"
+import caldwellCommuniquePdf from "../The Caldwell Communiquè 5.pdf"
 import "@flaticon/flaticon-uicons/css/regular/rounded.css"
 import "./styles.css"
 
