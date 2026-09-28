@@ -50,7 +50,7 @@ const academicBlocks = [
     title: "Study Material",
     items: [
       { label: "Code of Conduct", href: "https://knowt.com/flashcards/41c96fba-71b4-4cba-bc14-c6e2ec32c4bf"},
-      { label: "Chain of Command", href: "https://knowt.com/flashcards/8787a94f-59a3-474f-bb54-8635b0911392" },
+      { label: "Chain of Command", href: "https://knowt.com/flashcards/94819794-0d9a-47b1-9c03-d8a89f424a82" },
       { label: "Majcoms and Fieldcoms", href: "https://knowt.com/flashcards/55f18cd8-8aaf-421b-bbcc-135c58e13776" },
       { label: "Airmans creed", href: "https://knowt.com/flashcards/444475a0-2dc2-4801-849b-88ad6f1550ca" },
       { label: "All other study materials", href: "https://knowt.com/folder/7d426136-8cd7-4511-a816-13184dac07cc" }
