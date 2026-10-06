@@ -25,7 +25,7 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "This week, I want to challenge each of you to take responsibility for your preparation, effort, attitude, and results. Do not accept mediocrity. You can be given all the opportunities, time, and support to succeed but at the end of the day, we can't want it more than you want it for yourself. I truly believe, more than that, I KNOW that each of you can be great and do great things for our nation. Remember why you're choosing to serve."
+  "With LLAB, LCCs, and Uniform Earning workouts this week, we’ll be asked a lot of. I encourage you all to approach this not as a burdensome examination but as an opportunity to show what you can do and display the fruits of your work up to this point."
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
