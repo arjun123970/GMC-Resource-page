@@ -60,22 +60,24 @@ const academicBlocks = [
     title: "Weekly PDF's",
     items: [
       { label: "SI PPTX", href: "https://purdue0.sharepoint.com/:f:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/GMC/SI?d=w63159262ba964ef4953d75407762ced5&csf=1&web=1&e=ZoFjOH" },
-      { label: "LLAB PPTX", href: "https://purdue0.sharepoint.com/:f:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/GMC/LLAB%20Slides?d=wfac3d66edd434c2fb66a34b467906394&csf=1&web=1&e=nhyRxn" },
-      { label: "Quiz Answers PPTX", href: "https://purdue0.sharepoint.com/:p:/s/AFROTCDetachment220-GMC/IQAz7TVE8UTFT6NMoLBzxChrAUFcgZxv18UDpqFSvNEeoxw?e=ETAXBL" },
-      { label: "Archived PDFs from previous weeks", href: "#" }
+      { label: "LLAB PPTX", href: "https://purdue0.sharepoint.com/:p:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/LLAB%204%20Academic%20Slides%20(1).pptx?d=w6dc2f4e948424082ae5135dcf93bb1f4&csf=1&web=1&e=x6YINU" },
+      { label: "Quiz Answers PPTX", href: "https://purdue0.sharepoint.com/:p:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/LLAB%204%20Quiz%20Corrections.pptx?d=w4b8132454c6942f0a8bc37df9bb6f5de&csf=1&web=1&e=cgQrgG" },
+      { label: "Archived PDFs from previous weeks", href: "https://purdue0.sharepoint.com/:f:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/GMC/LLAB%20Slides%20and%20Quiz%20Corrections?d=wfac3d66edd434c2fb66a34b467906394&csf=1&web=1&e=zwAg81" }
     ]
   },
   {
     title: "Topics for the week",
     items: [
-      { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets topeers, superiors, and subordinates."},
       { label: "4.2 - Practice proper forms of saluting and recognize who and when to salute." },
       { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
+      { label: "4.9 - Describe proper procedures for retreat." },
+      { label: "4.10 - Describe proper procedures for reveille." },
       { label: "6.2 - Demonstrate proper DAF grooming standards." },
-      { label: "8.1 - Demonstrate effective followership" },
-      { label: "8.2 - Demonstrate effective team leadership" },
-      { label: "8.4 - Demonstrate the principles of an effective debrief(BCL ONLY)" },
-      { label: "8.9 - Practice Leadership Evaluation Using the Form 2" },
+      { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards." },
+      { label: "7.1 - Demonstrate drill fundamentals." },
+      { label: "7.2 - Demonstrate individual drill instruction." },
+      { label: "7.4 - Demonstrate intermediate drill of the flight." },
+      { label: "7.10 - Demonstrate proper road guard procedures." },
     ]
   }
 ]
@@ -99,7 +101,7 @@ const td0ChecklistItems = [
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2023%20Sep.pdf?TeamsCID=15f76f4a-5662-4ec3-a3da-8131701aa5a5"
-const weeklyOpordUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%206.pdf?TeamsCID=64aa124a-626b-47c2-9974-00eef759c069"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%207.pdf?d=w79b72a02a2554194a90e745af2796137&csf=1&web=1&e=cbgZew"
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const ptChecklistItems = [
