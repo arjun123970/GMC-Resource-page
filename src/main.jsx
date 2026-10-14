@@ -68,16 +68,15 @@ const academicBlocks = [
   {
     title: "Topics for the week",
     items: [
+      { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets to peers, superiors, and subordinates." },
       { label: "4.2 - Practice proper forms of saluting and recognize who and when to salute." },
       { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
-      { label: "4.9 - Describe proper procedures for retreat." },
-      { label: "4.10 - Describe proper procedures for reveille." },
       { label: "6.2 - Demonstrate proper DAF grooming standards." },
       { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards." },
-      { label: "7.1 - Demonstrate drill fundamentals." },
-      { label: "7.2 - Demonstrate individual drill instruction." },
-      { label: "7.4 - Demonstrate intermediate drill of the flight." },
-      { label: "7.10 - Demonstrate proper road guard procedures." },
+      { label: "8.1 - Demonstrate effective followership." },
+      { label: "8.2 - Demonstrate effective team leadership." },
+      { label: "8.6 - Employ risk management principles and execute operations safely." },
+      { label: "8.7 - Understand how mission planning impacts performance in problem solving and completing a mission.(BCL only)" },
     ]
   }
 ]
@@ -101,7 +100,7 @@ const td0ChecklistItems = [
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2023%20Sep.pdf?TeamsCID=15f76f4a-5662-4ec3-a3da-8131701aa5a5"
-const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%207.pdf?d=w79b72a02a2554194a90e745af2796137&csf=1&web=1&e=cbgZew"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/05.%20Weekly%20OPORDs%20and%20PMT%20Resources/Week%208%20(12%20Oct)/F26%20OPORD%208.pdf?d=w73096647ccb04c31b24b74ee496a74f9&csf=1&web=1&e=V9EGRx"
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const ptChecklistItems = [
