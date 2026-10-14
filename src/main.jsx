@@ -25,7 +25,7 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "With LLAB, LCCs, and Uniform Earning workouts this week, we’ll be asked a lot of. I encourage you all to approach this not as a burdensome examination but as an opportunity to show what you can do and display the fruits of your work up to this point."
+  "ndividual Accountability: We are over halfway through the semester, and as such, will shift to providing you less resources in an effort to promote individual efforts and responsibility for your own development. AS100s, next semester you'll be on your own, so its crucial that you know how to navigate the Det provided resources and be self-starters. We'll talk about this more at SI tomorrow!"
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
