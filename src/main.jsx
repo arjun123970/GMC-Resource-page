@@ -59,8 +59,8 @@ const academicBlocks = [
   {
     title: "Weekly PDF's",
     items: [
-      { label: "SI PPTX", href: "https://purdue0.sharepoint.com/:f:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/GMC/SI?d=w63159262ba964ef4953d75407762ced5&csf=1&web=1&e=ZoFjOH" },
-      { label: "LLAB PPTX", href: "https://purdue0.sharepoint.com/:p:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/LLAB%204%20Academic%20Slides%20(1).pptx?d=w6dc2f4e948424082ae5135dcf93bb1f4&csf=1&web=1&e=x6YINU" },
+      { label: "SI PPTX", href: "https://purdue0-my.sharepoint.com/:p:/g/personal/oterrett_purdue_edu/IQCoHsuTghZEQL-sOAt23BfJAQtn6I-QzxfldWui6YPtop0?e=whGwbA" },
+      { label: "LLAB PPTX", href: "https://purdue0.sharepoint.com/:p:/s/AFROTCDetachment220-GMC/IQCUDPSZctyJTYkYEyI4ArGRAQ6-7lpoLVCg6IflXbnEHpQ?e=hkGjLb" },
       { label: "Quiz Answers PPTX", href: "https://purdue0.sharepoint.com/:p:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/LLAB%204%20Quiz%20Corrections.pptx?d=w4b8132454c6942f0a8bc37df9bb6f5de&csf=1&web=1&e=cgQrgG" },
       { label: "Archived PDFs from previous weeks", href: "https://purdue0.sharepoint.com/:f:/r/sites/AFROTCDetachment220-GMC/Shared%20Documents/GMC/LLAB%20Slides%20and%20Quiz%20Corrections?d=wfac3d66edd434c2fb66a34b467906394&csf=1&web=1&e=zwAg81" }
     ]
