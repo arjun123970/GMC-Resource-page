@@ -25,7 +25,7 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "ndividual Accountability: We are over halfway through the semester, and as such, will shift to providing you less resources in an effort to promote individual efforts and responsibility for your own development. AS100s, next semester you'll be on your own, so its crucial that you know how to navigate the Det provided resources and be self-starters. We'll talk about this more at SI tomorrow!"
+  "I encourage you all to take this week to rest up, but simultaneously make an effort to hone in on your weak spots so that we can be ready to perform as a class in coming weeks."
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
@@ -68,15 +68,7 @@ const academicBlocks = [
   {
     title: "Topics for the week",
     items: [
-      { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets to peers, superiors, and subordinates." },
-      { label: "4.2 - Practice proper forms of saluting and recognize who and when to salute." },
-      { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
-      { label: "6.2 - Demonstrate proper DAF grooming standards." },
-      { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards." },
-      { label: "8.1 - Demonstrate effective followership." },
-      { label: "8.2 - Demonstrate effective team leadership." },
-      { label: "8.6 - Employ risk management principles and execute operations safely." },
-      { label: "8.7 - Understand how mission planning impacts performance in problem solving and completing a mission.(BCL only)" },
+      { label: "6.7 - NOTHING!!! Enjoy a nice Thursday of sleeping in" },
     ]
   }
 ]
@@ -100,7 +92,7 @@ const td0ChecklistItems = [
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2023%20Sep.pdf?TeamsCID=15f76f4a-5662-4ec3-a3da-8131701aa5a5"
-const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/05.%20Weekly%20OPORDs%20and%20PMT%20Resources/Week%208%20(12%20Oct)/F26%20OPORD%208.pdf?d=w73096647ccb04c31b24b74ee496a74f9&csf=1&web=1&e=V9EGRx"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%209.pdf?d=w7233445adac9444680f2098b134647d1&csf=1&web=1&e=jMgKqC"
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const ptChecklistItems = [
