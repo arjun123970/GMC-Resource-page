@@ -25,7 +25,7 @@ const visibleNavItems = navItems.filter((item) => !item.hidden)
 const defaultTab = visibleNavItems[0]?.id ?? "td0"
 
 const weeklyObjectives = [
-  "I encourage you all to take this week to rest up, but simultaneously make an effort to hone in on your weak spots so that we can be ready to perform as a class in coming weeks."
+  "Three Core Tenants of Aptitude: Uniform, Procedures, Academics. Meet all of these by final LLAB."
 ]
 
 const td0UniformPdf = "https://purdue0.sharepoint.com/:u:/s/AFROTCDetachment220-WingStaff/IQB768Maj6cATYNZWyVkszhoAYXmmE6mi2zpXaeRb3ZABdY?e=Hv1yEI"
@@ -68,7 +68,20 @@ const academicBlocks = [
   {
     title: "Topics for the week",
     items: [
-      { label: "6.7 - NOTHING!!! Enjoy a nice Thursday of sleeping in" },
+      { label: "4.1 - Recall proper DAF customs and courtesies expected of cadets to peers, superiors, and subordinates " },
+      { label: "4.2 - Practice proper forms of saluting and recognize who and when to salute." },
+      { label: "4.3 - Practice reporting in/reporting out procedures" },
+      { label: "4.4 - Utilize the proper courtesies displayed during informal and formal activities." },
+      { label: "6.2 - Demonstrate proper DAF grooming standards." },
+      { label: "6.3 - Demonstrate proper AFROTC and DAF dress and appearance standards." },
+      { label: "7.1 - Demonstrate drill fundamentals." },
+      { label: "7.2 - Demonstrate individual drill instruction." },
+      { label: "7.3 - Demonstrate basic drill of the flight" },
+      { label: "7.4 - Demonstrate intermediate drill of the flight." },
+      { label: "7.5 - Demonstrate advanced drill of the flight." },
+      { label: "7.6 - Demonstrate proper guidon positioning, commands, and movements.(BCL Only)" },
+      { label: "7.9 - Demonstrate Open Ranks Inspection.(BCL Only)" },
+      { label: "7.10 - Demonstrate proper road guard procedures." },
     ]
   }
 ]
@@ -92,7 +105,7 @@ const td0ChecklistItems = [
 
 const uniformPdf = "https://static.e-publishing.af.mil/production/1/af_a1/publication/dafi36-2903/dafi36-2903.pdf"
 const det220SopsUrl = "https://purdue0.sharepoint.com/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20SOPs%20-%20CAO%2023%20Sep.pdf?TeamsCID=15f76f4a-5662-4ec3-a3da-8131701aa5a5"
-const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%209.pdf?d=w7233445adac9444680f2098b134647d1&csf=1&web=1&e=jMgKqC"
+const weeklyOpordUrl = "https://purdue0.sharepoint.com/:b:/r/sites/AFROTCDetachment220/Shared%20Documents/General/F26%20OPORD%2010.pdf?d=w39eedd6a8b48463da7ca1c1141be0f3a&csf=1&web=1&e=RhJ4Ug"
 const cadetShoutoutFormUrl = "https://forms.cloud.microsoft/r/L2RpnjAX5R"
 
 const ptChecklistItems = [
